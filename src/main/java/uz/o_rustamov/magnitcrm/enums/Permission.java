@@ -1,0 +1,43 @@
+package uz.o_rustamov.magnitcrm.enums;
+
+public enum Permission {
+
+    ADD_PRODUCT,
+    VIEW_PRODUCTS,
+    DELETE_PRODUCT,
+    EDIT_PRODUCT,
+
+    ADD_INPUT,
+    VIEW_INPUTS,
+    VIEW_MY_INPUTS,
+    DELETE_INPUT,
+    EDIT_INPUT,
+
+    ADD_OUTPUT,
+    VIEW_OUTPUTS,
+    VIEW_MY_OUTPUTS,
+    DELETE_OUTPUT,
+    EDIT_OUTPUT,
+
+    ADD_SUPPLIER,
+    VIEW_SUPPLIERS,
+    DELETE_SUPPLIER,
+    EDIT_SUPPLIER,
+
+    ADD_RECIPIENT,
+    VIEW_RECIPIENTS,
+    DELETE_RECIPIENT,
+    EDIT_RECIPIENT,
+
+    ADD_USER,
+    DELETE_USER,
+    EDIT_USER,
+    VIEW_USERS,
+
+    ADD_ROLE,
+    VIEW_ROLES,
+    EDIT_ROLE,
+    DELETE_ROLE,
+
+
+}

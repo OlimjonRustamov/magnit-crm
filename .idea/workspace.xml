@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="faaa8861-687c-42ec-8296-0809187b5572" name="Changes" comment="Project built &amp; login" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/main" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2E9SoDbdkauVvbUfXLPincOkJ5K" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Olimj/Desktop/java/Company&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pathVariables&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;a0edfe15b1d39a9ce58e51c0a048d43e&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Olimj\Desktop\java\magnit_crm\Magnit CRM\src\main\java\uz\o_rustamov\magnitcrm\entity" />
+      <recent name="C:\Users\Olimj\Desktop\java\magnit_crm\Magnit CRM\src\main\java\uz\o_rustamov\magnitcrm\configuration" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Olimj\Desktop\java\magnit_crm\Magnit CRM\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="uz.o_rustamov.magnitcrm.payload" />
+      <recent name="uz.o_rustamov.magnitcrm.controller" />
+      <recent name="uz.o_rustamov.magnitcrm.data_loader" />
+      <recent name="uz.o_rustamov.magnitcrm.repository" />
+      <recent name="uz.o_rustamov.magnitcrm.enums" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="MagnitCrmApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Magnit CRM" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="uz.o_rustamov.magnitcrm.MagnitCrmApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="faaa8861-687c-42ec-8296-0809187b5572" name="Changes" comment="" />
+      <created>1662006482025</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1662006482025</updated>
+      <workItem from="1662006483551" duration="8155000" />
+      <workItem from="1662021121376" duration="8279000" />
+      <workItem from="1662049928848" duration="822000" />
+      <workItem from="1662051047481" duration="1638000" />
+      <workItem from="1662052727640" duration="362000" />
+    </task>
+    <task id="LOCAL-00001" summary="Project built &amp; login">
+      <created>1662051658702</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1662051658702</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Project built" />
+    <MESSAGE value="Project built &amp; login" />
+    <option name="LAST_COMMIT_MESSAGE" value="Project built &amp; login" />
+  </component>
+</project>
