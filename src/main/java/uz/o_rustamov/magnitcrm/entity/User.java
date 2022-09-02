@@ -1,5 +1,7 @@
 package uz.o_rustamov.magnitcrm.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonKey;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -35,6 +37,7 @@ public class User implements UserDetails {
     @Column(nullable = false, unique = true)
     private String username;
 
+    @JsonIgnore
     @Column(nullable = false)
     private String password;
 
@@ -46,31 +49,30 @@ public class User implements UserDetails {
 
     boolean enabled;
 
+    @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
         List<Permission> permissionList = role.getPermissionList();
         for (Permission permission : permissionList) {
-            grantedAuthorityList.add(new GrantedAuthority() {
-                @Override
-                public String getAuthority() {
-                    return permission.name();
-                }
-            });
+            grantedAuthorityList.add((GrantedAuthority) permission::name);
         }
         return grantedAuthorityList;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return true;

@@ -27,4 +27,10 @@ public class RoleController {
     public HttpEntity<?> viewRoles() {
         return roleService.getRoles();
     }
+
+    @PreAuthorize(value = "hasAuthority('DELETE_ROLE')")
+    @DeleteMapping(value = "{id}")
+    public HttpEntity<?> deleteRole(@PathVariable long id) {
+        return roleService.deleteRole(id);
+    }
 }

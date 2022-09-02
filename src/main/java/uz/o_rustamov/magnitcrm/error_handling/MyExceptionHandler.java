@@ -33,7 +33,7 @@ public class MyExceptionHandler {
     @ExceptionHandler(AccessDeniedException.class)
     public HttpEntity<ApiResponse> handleForbiddenException(AccessDeniedException ex) {
         return ResponseEntity.status(403).body(new ApiResponse(
-                "Sizda ushbu ma'lumotlarni ko'rish uchun ruxsat mavjud emas",
+                "Sizda ushbu amalni bajarish uchun ruxsat mavjud emas",
                 403, false, null));
 
     }

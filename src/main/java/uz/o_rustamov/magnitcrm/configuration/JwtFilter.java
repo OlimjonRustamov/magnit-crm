@@ -2,6 +2,7 @@ package uz.o_rustamov.magnitcrm.configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.SignatureException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -39,16 +40,23 @@ public class JwtFilter extends OncePerRequestFilter {
                     SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
                 }
             } catch (ExpiredJwtException ex) {
-                performError(response);
+                performError(response, "Identifikatsiya ma'lumotlari eskirgan");
+                return;
+            } catch (SignatureException ex) {
+                performError(response, "Identifikatsiya ma'lumotlari noto'g'ri");
                 return;
             }
+        } else if (!request.getServletPath().equals("/api/auth/login")) {
+            performError(response, "Identifikatsiyadan o'tish talab etiladi");
+            return;
         }
         filterChain.doFilter(request, response);
     }
 
-    private void performError(HttpServletResponse response) throws IOException{
+    private void performError(HttpServletResponse response, String message) throws IOException {
         ApiResponse errorResponse = new ApiResponse(
-                "Identifikatsiya ma'lumotlari eskirgan",
+//                "Identifikatsiya ma'lumotlari eskirgan",
+                message,
                 401, false, null);
 
         response.setStatus(401);

@@ -1,5 +1,6 @@
 package uz.o_rustamov.magnitcrm.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -17,9 +18,11 @@ public class Role{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    @JsonIgnore
     @CreationTimestamp
     private Timestamp createdAt;
 
+    @JsonIgnore
     @Column(nullable = false)
     @UpdateTimestamp
     private Timestamp updatedAt;

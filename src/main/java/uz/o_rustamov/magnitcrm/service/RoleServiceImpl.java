@@ -13,8 +13,11 @@ import uz.o_rustamov.magnitcrm.repository.RoleRepository;
 @Service
 public class RoleServiceImpl implements RoleService {
 
-    @Autowired
     RoleRepository roleRepository;
+
+    public RoleServiceImpl(RoleRepository roleRepository) {
+        this.roleRepository = roleRepository;
+    }
 
     @Override
     public HttpEntity<ApiResponse> getRoles() {
@@ -27,7 +30,21 @@ public class RoleServiceImpl implements RoleService {
         Role role = new Role();
         role.setName(dto.getName());
         role.setPermissionList(dto.getPermissionList());
-        role = roleRepository.save(role);
-        return ResponseEntity.ok(new ApiResponse(null, 200, true, "Role added"));
+        try {
+            role = roleRepository.save(role);
+            return ResponseEntity.ok(new ApiResponse(null, 200, true, "Role added"));
+        } catch (Exception e) {
+            return ResponseEntity.status(409).body(new ApiResponse("Ushbu role mavjud", 409, false, null));
+        }
+    }
+
+    @Override
+    public HttpEntity<ApiResponse> deleteRole(long id) {
+        try {
+            roleRepository.deleteById(id);
+            return ResponseEntity.ok(new ApiResponse(null, 200, true, "Role deleted"));
+        } catch (Exception e) {
+            return ResponseEntity.status(404).body(new ApiResponse("Role not found", 404, false, null));
+        }
     }
 }
