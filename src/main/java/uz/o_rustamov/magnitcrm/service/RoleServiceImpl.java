@@ -9,6 +9,10 @@ import uz.o_rustamov.magnitcrm.entity.Role;
 import uz.o_rustamov.magnitcrm.payload.RoleDto;
 import uz.o_rustamov.magnitcrm.repository.RoleRepository;
 
+import java.util.Optional;
+
+import static uz.o_rustamov.magnitcrm.Constants.*;
+
 @Service
 public class RoleServiceImpl implements RoleService {
 
@@ -31,9 +35,9 @@ public class RoleServiceImpl implements RoleService {
         role.setPermissionList(dto.getPermissionList());
         try {
             role = roleRepository.save(role);
-            return ResponseEntity.ok(new ApiResponse(null, 200, true, "Role added"));
+            return SUCCESS;
         } catch (Exception e) {
-            return ResponseEntity.status(409).body(new ApiResponse("Ushbu role mavjud", 409, false, null));
+            return ALREADY_EXIST;
         }
     }
 
@@ -41,9 +45,18 @@ public class RoleServiceImpl implements RoleService {
     public HttpEntity<ApiResponse> deleteRole(long id) {
         try {
             roleRepository.deleteById(id);
-            return ResponseEntity.ok(new ApiResponse(null, 200, true, "Role deleted"));
+            return SUCCESS;
         } catch (Exception e) {
-            return ResponseEntity.status(404).body(new ApiResponse("Role not found", 404, false, null));
+            return NOT_FOUND;
         }
+    }
+
+    @Override
+    public HttpEntity<ApiResponse> getRoleById(long id) {
+        Optional<Role> optionalRole = roleRepository.findById(id);
+        if (optionalRole.isPresent()) {
+            return ResponseEntity.ok(new ApiResponse(null, 200, true, optionalRole.get()));
+        }
+        return NOT_FOUND;
     }
 }

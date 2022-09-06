@@ -28,6 +28,12 @@ public class RoleController {
         return roleService.getRoles();
     }
 
+    @PreAuthorize(value = "hasAuthority('VIEW_ROLES')")
+    @GetMapping("/{id}")
+    public HttpEntity<?> viewRoleById(@PathVariable Long id) {
+        return roleService.getRoleById(id);
+    }
+
     @PreAuthorize(value = "hasAuthority('DELETE_ROLE')")
     @DeleteMapping(value = "{id}")
     public HttpEntity<?> deleteRole(@PathVariable long id) {

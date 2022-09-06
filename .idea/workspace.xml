@@ -4,24 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="faaa8861-687c-42ec-8296-0809187b5572" name="Changes" comment="JwtFilter fixed &amp; UserController added">
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/RecipientService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/RecipientController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/Recipient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/payload/RecipientDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/RecipientRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/RecipientServiceImpl.java" afterDir="false" />
+    <list default="true" id="faaa8861-687c-42ec-8296-0809187b5572" name="Changes" comment="Recipient CRUD">
+      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/SupplierService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/SupplierController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/Supplier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/payload/SupplierDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/SupplierRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/SupplierServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/di/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/di/ProfileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/ProfileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/di/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/RoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/di/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/AuthServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/ProfileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/ProfileServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/RoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/RoleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/RoleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/di/AuthService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/di/RoleService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/service/AuthServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/service/AuthServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/service/RoleServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/service/RoleServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,8 +74,8 @@
       <recent name="C:\Users\Olimj\Desktop\java\magnit_crm\Magnit CRM\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="uz.o_rustamov.magnitcrm.payload" />
       <recent name="uz.o_rustamov.magnitcrm.controller" />
+      <recent name="uz.o_rustamov.magnitcrm.payload" />
       <recent name="uz.o_rustamov.magnitcrm.data_loader" />
       <recent name="uz.o_rustamov.magnitcrm.repository" />
       <recent name="uz.o_rustamov.magnitcrm.enums" />
@@ -109,7 +104,8 @@
       <workItem from="1662051047481" duration="1638000" />
       <workItem from="1662052727640" duration="602000" />
       <workItem from="1662096522963" duration="11999000" />
-      <workItem from="1662439402318" duration="5613000" />
+      <workItem from="1662439402318" duration="5656000" />
+      <workItem from="1662468762332" duration="1831000" />
     </task>
     <task id="LOCAL-00001" summary="Project built &amp; login">
       <created>1662051658702</created>
@@ -132,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662115420668</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Recipient CRUD">
+      <created>1662445553941</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1662445553941</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,7 +156,8 @@
     <MESSAGE value="Project built" />
     <MESSAGE value="Project built &amp; login" />
     <MESSAGE value="JwtFilter fixed &amp; UserController added" />
-    <option name="LAST_COMMIT_MESSAGE" value="JwtFilter fixed &amp; UserController added" />
+    <MESSAGE value="Recipient CRUD" />
+    <option name="LAST_COMMIT_MESSAGE" value="Recipient CRUD" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -11,4 +11,6 @@ public interface RoleService {
     HttpEntity<ApiResponse> addRole(RoleDto dto);
 
     HttpEntity<ApiResponse> deleteRole(long id);
+
+    HttpEntity<ApiResponse> getRoleById(long id);
 }
