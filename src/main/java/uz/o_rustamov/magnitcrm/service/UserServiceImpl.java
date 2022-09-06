@@ -1,12 +1,11 @@
 package uz.o_rustamov.magnitcrm.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import uz.o_rustamov.magnitcrm.ApiResponse;
-import uz.o_rustamov.magnitcrm.di.UserService;
+import uz.o_rustamov.magnitcrm.abs_interface.UserService;
 import uz.o_rustamov.magnitcrm.entity.Role;
 import uz.o_rustamov.magnitcrm.entity.User;
 import uz.o_rustamov.magnitcrm.payload.UserDto;

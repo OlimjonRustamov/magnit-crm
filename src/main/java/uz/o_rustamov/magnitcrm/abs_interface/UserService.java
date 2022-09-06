@@ -1,11 +1,8 @@
-package uz.o_rustamov.magnitcrm.di;
+package uz.o_rustamov.magnitcrm.abs_interface;
 
 import org.springframework.http.HttpEntity;
 import uz.o_rustamov.magnitcrm.ApiResponse;
-import uz.o_rustamov.magnitcrm.entity.User;
 import uz.o_rustamov.magnitcrm.payload.UserDto;
-
-import java.util.List;
 
 public interface UserService {
 
