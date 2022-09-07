@@ -1,5 +1,6 @@
 package uz.o_rustamov.magnitcrm.service;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -74,6 +75,9 @@ public class RecipientServiceImpl implements RecipientService {
         try {
             recipientRepository.deleteById(id);
             return SUCCESS;
+        } catch (
+                DataIntegrityViolationException ex) {
+            return CONNECTED_WITH_OTHERS_EXCEPTION;
         } catch (Exception e) {
             return ResponseEntity.status(409).body(new ApiResponse(
                     e.getMessage(), 409, false, null));

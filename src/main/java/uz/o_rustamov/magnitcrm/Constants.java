@@ -15,11 +15,13 @@ public class Constants {
     public static final String odil_akramov = "odil_akramov";
 
     public static final HttpEntity<ApiResponse> NOT_FOUND = ResponseEntity.status(404).body(
-                    new ApiResponse("Recource not found", 409, false, null));
+                    new ApiResponse("Recource not found", 404, false, null));
 
-    public static final HttpEntity<ApiResponse> SUCCESS = ResponseEntity.status(404).body(
+    public static final HttpEntity<ApiResponse> SUCCESS = ResponseEntity.ok(
                     new ApiResponse(null, 200, true, "Muvaffaqiyatli amalga oshirildi"));
 
     public static final HttpEntity<ApiResponse> ALREADY_EXIST = ResponseEntity.status(409).body(
                     new ApiResponse("Resource already exist", 409, false, null));
+    public static final HttpEntity<ApiResponse> CONNECTED_WITH_OTHERS_EXCEPTION = ResponseEntity.status(406).body(
+                    new ApiResponse("Boshqa ma'lumotlarga bog'langanligi uchun o'chirish imkonsiz", 406, false, null));
 }

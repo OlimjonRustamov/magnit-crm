@@ -1,5 +1,6 @@
 package uz.o_rustamov.magnitcrm.service;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -46,6 +47,8 @@ public class RoleServiceImpl implements RoleService {
         try {
             roleRepository.deleteById(id);
             return SUCCESS;
+        } catch (DataIntegrityViolationException ex) {
+            return CONNECTED_WITH_OTHERS_EXCEPTION;
         } catch (Exception e) {
             return NOT_FOUND;
         }

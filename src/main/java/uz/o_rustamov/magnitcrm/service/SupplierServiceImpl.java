@@ -1,5 +1,6 @@
 package uz.o_rustamov.magnitcrm.service;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -50,7 +51,7 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public HttpEntity<ApiResponse> addSupplier(SupplierDto dto) {
-        if(supplierRepository.existsByName(dto.getName()))
+        if (supplierRepository.existsByName(dto.getName()))
             return ALREADY_EXIST;
         Supplier supplier = new Supplier();
         supplier.setName(dto.getName());
@@ -63,6 +64,9 @@ public class SupplierServiceImpl implements SupplierService {
         try {
             supplierRepository.deleteById(id);
             return SUCCESS;
+        } catch (
+                DataIntegrityViolationException ex) {
+            return CONNECTED_WITH_OTHERS_EXCEPTION;
         } catch (Exception e) {
             return NOT_FOUND;
         }

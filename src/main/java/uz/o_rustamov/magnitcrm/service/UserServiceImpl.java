@@ -1,5 +1,6 @@
 package uz.o_rustamov.magnitcrm.service;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -32,8 +33,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public HttpEntity<ApiResponse> getUsers() {
-        return ResponseEntity.ok(new ApiResponse(null, 200,
-                true, userRepository.findAll()));
+        return ResponseEntity.ok(new ApiResponse(null, 200, true, userRepository.findAll()));
     }
 
     @Override
@@ -41,17 +41,14 @@ public class UserServiceImpl implements UserService {
         Optional<User> optionalUser = userRepository.findById(id);
         if (!optionalUser.isPresent()) return NOT_FOUND;
         User user = optionalUser.get();
-        return ResponseEntity.ok(
-                new ApiResponse(null, 200, true, user));
+        return ResponseEntity.ok(new ApiResponse(null, 200, true, user));
     }
 
     @Override
     public HttpEntity<ApiResponse> addUser(UserDto dto) {
         Optional<Role> optionalRole = roleRepository.findById(dto.getRoleId());
-        if (!optionalRole.isPresent())
-            return NOT_FOUND;
-        if (userRepository.existsByUsername(dto.getUsername()))
-            return ALREADY_EXIST;
+        if (!optionalRole.isPresent()) return NOT_FOUND;
+        if (userRepository.existsByUsername(dto.getUsername())) return ALREADY_EXIST;
         Role role = optionalRole.get();
         User user = new User();
         user.setPhoneNumber(dto.getPhoneNumber());
@@ -67,11 +64,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public HttpEntity<ApiResponse> editUser(long id, UserDto dto) {
         Optional<User> optionalUser = userRepository.findById(id);
-        if (!optionalUser.isPresent())
-            return NOT_FOUND;
+        if (!optionalUser.isPresent()) return NOT_FOUND;
 
-        if (userRepository.existsByUsername(dto.getUsername()))
-            return ALREADY_EXIST;
+        if (userRepository.existsByUsername(dto.getUsername())) return ALREADY_EXIST;
         User user = optionalUser.get();
         user.setUsername(dto.getUsername());
         user.setFullName(dto.getFullName());
@@ -85,6 +80,8 @@ public class UserServiceImpl implements UserService {
         try {
             userRepository.deleteById(id);
             return SUCCESS;
+        } catch (DataIntegrityViolationException ex) {
+            return CONNECTED_WITH_OTHERS_EXCEPTION;
         } catch (Exception e) {
             return NOT_FOUND;
         }
@@ -93,8 +90,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public HttpEntity<ApiResponse> changePassword(long id, String newPassword) {
         Optional<User> optionalUser = userRepository.findById(id);
-        if (!optionalUser.isPresent())
-            return NOT_FOUND;
+        if (!optionalUser.isPresent()) return NOT_FOUND;
         User user = optionalUser.get();
         user.setPassword(passwordEncoder.encode(newPassword));
         user = userRepository.save(user);

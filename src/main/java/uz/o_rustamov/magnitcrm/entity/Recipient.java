@@ -14,6 +14,6 @@ public class Recipient {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne
     private User user;
 }

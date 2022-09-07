@@ -44,7 +44,7 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String phoneNumber;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToOne
     Role role;
 
     boolean enabled;
