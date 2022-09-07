@@ -45,6 +45,9 @@ public class JwtFilter extends OncePerRequestFilter {
             } catch (SignatureException ex) {
                 performError(response, "Identifikatsiya ma'lumotlari noto'g'ri");
                 return;
+            } catch (Exception e) {
+                performError(response, e.getMessage());
+                return;
             }
         } else if (!request.getServletPath().equals("/api/auth/login")) {
             performError(response, "Identifikatsiyadan o'tish talab etiladi");
