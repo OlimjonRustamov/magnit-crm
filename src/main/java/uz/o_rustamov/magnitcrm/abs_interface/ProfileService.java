@@ -11,4 +11,6 @@ public interface ProfileService {
 
     HttpEntity<ApiResponse> changePassword(User user, ChangePasswordDto dto);
 
+    HttpEntity<ApiResponse> setFirebaseDeviceToken(User user, String deviceToken);
+
 }

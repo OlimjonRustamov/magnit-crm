@@ -44,6 +44,9 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String phoneNumber;
 
+    @Column
+    private String fcm_token;
+
     @ManyToOne
     Role role;
 

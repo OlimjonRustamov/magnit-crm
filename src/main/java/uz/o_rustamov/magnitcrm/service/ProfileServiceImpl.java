@@ -38,4 +38,11 @@ public class ProfileServiceImpl implements ProfileService {
                     "Parollar mos emas", 400, false, null));
         }
     }
+
+    @Override
+    public HttpEntity<ApiResponse> setFirebaseDeviceToken(User user, String deviceToken) {
+        user.setFcm_token(deviceToken);
+        userRepository.save(user);
+        return SUCCESS;
+    }
 }
