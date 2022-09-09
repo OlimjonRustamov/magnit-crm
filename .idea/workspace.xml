@@ -4,14 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="faaa8861-687c-42ec-8296-0809187b5572" name="Changes" comment="FCM configured">
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/fcm/Notification.java" afterDir="false" />
+    <list default="true" id="faaa8861-687c-42ec-8296-0809187b5572" name="Changes" comment="Set FCM device token &amp; test push notification">
+      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/InputService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/InputController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/Input.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/InputProduct.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/payload/InputDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/payload/InputProductDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/InputProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/InputRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/InputServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/ProfileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/ProfileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/data_loader/MyDataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/data_loader/MyDataLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/Role.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/ProfileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/ProfileServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/enums/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/enums/Permission.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/fcm/FirebaseMessagingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/fcm/FirebaseMessagingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/Constants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/data_loader/MyDataLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/data_loader/MyDataLoader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/entity/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/entity/Role.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/enums/Permission.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/enums/Permission.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +127,10 @@
       <workItem from="1662468762332" duration="2163000" />
       <workItem from="1662523646633" duration="5031000" />
       <workItem from="1662551192319" duration="3490000" />
-      <workItem from="1662618995005" duration="1360000" />
+      <workItem from="1662618995005" duration="1434000" />
+      <workItem from="1662698633139" duration="10131000" />
+      <workItem from="1662715767328" duration="4794000" />
+      <workItem from="1662725264267" duration="4397000" />
     </task>
     <task id="LOCAL-00001" summary="Project built &amp; login">
       <created>1662051658702</created>
@@ -159,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662554774216</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Set FCM device token &amp; test push notification">
+      <created>1662620401263</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1662620401263</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,6 +213,23 @@
     <MESSAGE value="Supplier CRUD &amp;&amp; role edited" />
     <MESSAGE value="Product CRUD &amp; cascade fixed" />
     <MESSAGE value="FCM configured" />
-    <option name="LAST_COMMIT_MESSAGE" value="FCM configured" />
+    <MESSAGE value="Set FCM device token &amp; test push notification" />
+    <option name="LAST_COMMIT_MESSAGE" value="Set FCM device token &amp; test push notification" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/fcm/FirebaseMessagingService.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/ProductServiceImpl.java</url>
+          <line>78</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

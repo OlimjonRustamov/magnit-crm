@@ -15,13 +15,25 @@ public class Constants {
     public static final String odil_akramov = "odil_akramov";
 
     public static final HttpEntity<ApiResponse> NOT_FOUND = ResponseEntity.status(404).body(
-                    new ApiResponse("Recource not found", 404, false, null));
+            new ApiResponse("Recource not found", 404, false, null));
 
     public static final HttpEntity<ApiResponse> SUCCESS = ResponseEntity.ok(
-                    new ApiResponse(null, 200, true, "Muvaffaqiyatli amalga oshirildi"));
+            new ApiResponse(null, 200, true, "Muvaffaqiyatli amalga oshirildi"));
+
+    public static final HttpEntity<ApiResponse> ADD_OUTPUT_MARKET_STAFF_WARNING = ResponseEntity.ok(
+            new ApiResponse(null, 100, true, "Ushbu amal market xodimi tomonidan bajarilganligi uchun mahsulotlar soniga ta'sir qilmaydi. Faqatgina haydovchi uchun yoziladi."));
 
     public static final HttpEntity<ApiResponse> ALREADY_EXIST = ResponseEntity.status(409).body(
-                    new ApiResponse("Resource already exist", 409, false, null));
+            new ApiResponse("Resource already exist", 409, false, null));
     public static final HttpEntity<ApiResponse> CONNECTED_WITH_OTHERS_EXCEPTION = ResponseEntity.status(406).body(
-                    new ApiResponse("Boshqa ma'lumotlarga bog'langanligi uchun o'chirish imkonsiz", 406, false, null));
+            new ApiResponse("Boshqa ma'lumotlarga bog'langanligi uchun o'chirish imkonsiz", 406, false, null));
+
+    public static final HttpEntity<ApiResponse> PARSE_EXCEPTION = ResponseEntity.status(406).body(
+            new ApiResponse("Parse qilishda xatolik", 406, false, null));
+
+    public static final HttpEntity<ApiResponse> PRODUCT_NOT_FOUND_APPLY_TO_DEVELOPER = ResponseEntity.status(406).body(
+            new ApiResponse("Mahsulot topilmadi. Ma'lumotlar buzilgan bo'lishi mumkin. Dasturchi bilan bog'laning!",
+                    406, false, null));
+    public static final HttpEntity<ApiResponse> FCM_ERROR = ResponseEntity.ok(new ApiResponse("Muvaffaqiyatli saqlandi. SMS yuborishda xatolik",
+            200, true, null));
 }

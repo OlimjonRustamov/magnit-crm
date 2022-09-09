@@ -4,6 +4,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import uz.o_rustamov.magnitcrm.ApiResponse;
+import uz.o_rustamov.magnitcrm.annotation.CurrentUser;
+import uz.o_rustamov.magnitcrm.entity.User;
 import uz.o_rustamov.magnitcrm.payload.ProductDto;
 import uz.o_rustamov.magnitcrm.service.ProductServiceImpl;
 
@@ -41,8 +43,8 @@ public class ProductController {
 
     @PreAuthorize(value = "hasAuthority('EDIT_PRODUCT')")
     @PutMapping("/{id}")
-    public HttpEntity<ApiResponse> editProduct(@Valid @RequestBody ProductDto dto, @PathVariable Long id) {
-        return productService.editProduct(id, dto);
+    public HttpEntity<ApiResponse> editProduct(@CurrentUser User user, @Valid @RequestBody ProductDto dto, @PathVariable Long id) {
+        return productService.editProduct(user, id, dto);
     }
 
 

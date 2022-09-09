@@ -32,5 +32,6 @@ public class Role{
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
+    @JsonIgnore
     private List<Permission> permissionList;
 }

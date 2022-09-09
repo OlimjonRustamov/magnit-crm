@@ -25,10 +25,12 @@ public class User implements UserDetails {
 
     @Column(nullable = false)
     @CreationTimestamp
+    @JsonIgnore
     private Timestamp createdAt;
 
     @Column(nullable = false)
     @UpdateTimestamp
+    @JsonIgnore
     private Timestamp updatedAt;
 
     @Column(nullable = false)
@@ -45,11 +47,13 @@ public class User implements UserDetails {
     private String phoneNumber;
 
     @Column
+    @JsonIgnore
     private String fcm_token;
 
     @ManyToOne
     Role role;
 
+    @JsonIgnore
     boolean enabled;
 
     @JsonIgnore

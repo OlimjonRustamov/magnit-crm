@@ -11,6 +11,7 @@ import uz.o_rustamov.magnitcrm.repository.RoleRepository;
 import uz.o_rustamov.magnitcrm.repository.UserRepository;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import static uz.o_rustamov.magnitcrm.Constants.*;
 import static uz.o_rustamov.magnitcrm.enums.Permission.*;
@@ -85,7 +86,7 @@ public class MyDataLoader implements CommandLineRunner {
             Role driver = new Role();
             driver.setName(ROLE_DRIVER);
             //driver can only view own inputs and outputs
-            driver.setPermissionList(Arrays.asList(VIEW_MY_INPUTS, VIEW_MY_OUTPUTS));
+            driver.setPermissionList(Collections.singletonList(VIEW_MY_OUTPUTS));
             driver = roleRepository.save(driver);
             if (!userRepository.existsByUsername(asqar_akramov)) {
                 User userDriver = new User();

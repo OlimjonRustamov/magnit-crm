@@ -9,7 +9,6 @@ public enum Permission {
 
     ADD_INPUT,
     VIEW_INPUTS,
-    VIEW_MY_INPUTS,
     DELETE_INPUT,
     EDIT_INPUT,
 

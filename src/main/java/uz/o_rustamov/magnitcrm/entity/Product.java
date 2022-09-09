@@ -1,5 +1,7 @@
 package uz.o_rustamov.magnitcrm.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -15,9 +17,11 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonIgnore
     @CreationTimestamp
     Timestamp createdAt;
 
+    @JsonIgnore
     @UpdateTimestamp
     Timestamp updatedAt;
 
@@ -34,11 +38,14 @@ public class Product {
     private int countInBox;
 
     @Column(nullable = false)
+    @JsonProperty("cost_for_driver")
     private int costForDriver;
 
+    @JsonProperty("cost_for_client")
     @Column(nullable = false)
     private int costForClient;
 
+    @JsonProperty("received_cost")
     @Column(nullable = false)
     private int receivedCost;
 
