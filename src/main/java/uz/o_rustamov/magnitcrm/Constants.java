@@ -31,9 +31,6 @@ public class Constants {
     public static final HttpEntity<ApiResponse> PARSE_EXCEPTION = ResponseEntity.status(406).body(
             new ApiResponse("Parse qilishda xatolik", 406, false, null));
 
-    public static final HttpEntity<ApiResponse> PRODUCT_NOT_FOUND_APPLY_TO_DEVELOPER = ResponseEntity.status(406).body(
-            new ApiResponse("Mahsulot topilmadi. Ma'lumotlar buzilgan bo'lishi mumkin. Dasturchi bilan bog'laning!",
-                    406, false, null));
     public static final HttpEntity<ApiResponse> FCM_ERROR = ResponseEntity.ok(new ApiResponse("Muvaffaqiyatli saqlandi. SMS yuborishda xatolik",
             200, true, null));
 }

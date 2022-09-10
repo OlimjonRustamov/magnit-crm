@@ -14,7 +14,7 @@ import java.sql.Timestamp;
 @Data
 @Entity
 @NoArgsConstructor
-public class InputProduct {
+public class OutputProduct {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,16 +37,16 @@ public class InputProduct {
 
     @ManyToOne
     @JsonIgnore
-    private Input input;
+    private Output output;
 
     @Column
     @JsonProperty("cost_pcs")
     private int costPcs;
 
-    public InputProduct(Product product, int boxCount, Input input, int costPcs) {
+    public OutputProduct(Product product, int boxCount, Output output, int costPcs) {
         this.product = product;
         this.boxCount = boxCount;
-        this.input = input;
+        this.output = output;
         this.costPcs = costPcs;
     }
 }

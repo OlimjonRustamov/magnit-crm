@@ -3,6 +3,7 @@ package uz.o_rustamov.magnitcrm.controller;
 import com.google.firebase.messaging.FirebaseMessagingException;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import uz.o_rustamov.magnitcrm.ApiResponse;
 import uz.o_rustamov.magnitcrm.annotation.CurrentUser;
@@ -14,6 +15,7 @@ import uz.o_rustamov.magnitcrm.service.ProfileServiceImpl;
 
 import static uz.o_rustamov.magnitcrm.Constants.SUCCESS;
 
+@Transactional
 @RestController
 @RequestMapping("/api/profile")
 public class ProfileController {

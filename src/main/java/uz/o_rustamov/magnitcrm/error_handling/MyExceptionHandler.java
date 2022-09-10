@@ -45,4 +45,12 @@ public class MyExceptionHandler {
                 401, false, null));
 
     }
+
+    @ExceptionHandler(ReverseException.class)
+    public HttpEntity<ApiResponse> handleExToReverse(ReverseException ex) {
+        return ResponseEntity.status(406).body(new ApiResponse(
+                ex.errorMessage,
+                406, false, null));
+
+    }
 }

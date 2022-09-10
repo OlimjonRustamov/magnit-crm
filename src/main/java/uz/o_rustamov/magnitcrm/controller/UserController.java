@@ -3,6 +3,7 @@ package uz.o_rustamov.magnitcrm.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import uz.o_rustamov.magnitcrm.ApiResponse;
 import uz.o_rustamov.magnitcrm.payload.UserDto;
@@ -10,6 +11,7 @@ import uz.o_rustamov.magnitcrm.service.UserServiceImpl;
 
 import javax.validation.Valid;
 
+@Transactional
 @RestController
 @RequestMapping("/api/user")
 public class UserController {

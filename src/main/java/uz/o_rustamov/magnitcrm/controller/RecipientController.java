@@ -4,6 +4,7 @@ import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import uz.o_rustamov.magnitcrm.ApiResponse;
 import uz.o_rustamov.magnitcrm.payload.RecipientDto;
@@ -11,6 +12,7 @@ import uz.o_rustamov.magnitcrm.service.RecipientServiceImpl;
 
 import javax.validation.Valid;
 
+@Transactional
 @RestController
 @RequestMapping("/api/recipient")
 public class RecipientController {

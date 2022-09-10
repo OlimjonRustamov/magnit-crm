@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 import uz.o_rustamov.magnitcrm.ApiResponse;
 import uz.o_rustamov.magnitcrm.abs_interface.InputService;
 import uz.o_rustamov.magnitcrm.entity.*;
+import uz.o_rustamov.magnitcrm.error_handling.ReverseException;
 import uz.o_rustamov.magnitcrm.fcm.FirebaseMessagingService;
 import uz.o_rustamov.magnitcrm.payload.InputDto;
-import uz.o_rustamov.magnitcrm.payload.InputProductDto;
+import uz.o_rustamov.magnitcrm.payload.InputOutputProductDto;
 import uz.o_rustamov.magnitcrm.repository.InputProductRepository;
 import uz.o_rustamov.magnitcrm.repository.InputRepository;
 import uz.o_rustamov.magnitcrm.repository.ProductRepository;
@@ -123,15 +124,15 @@ public class InputServiceImpl implements InputService {
         long costAllProducts = 0L;
         Input input = new Input(date, costAllProducts, supplier, dto.getGivenMoney(), user, dto.getNote());
         input = inputRepository.save(input);
-        List<InputProductDto> products = dto.getProductList();
-        for (InputProductDto inputProductDto : products) {
-            Optional<Product> optionalProduct = productRepository.findById(inputProductDto.getProductId());
-            if (!optionalProduct.isPresent()) return PRODUCT_NOT_FOUND_APPLY_TO_DEVELOPER;
+        List<InputOutputProductDto> products = dto.getProductList();
+        for (InputOutputProductDto inputOutputProductDto : products) {
+            Optional<Product> optionalProduct = productRepository.findById(inputOutputProductDto.getProductId());
+            if (!optionalProduct.isPresent()) throw new ReverseException("Mahsulot mavjud emas");
             Product product = optionalProduct.get();
             InputProduct inputProduct = new InputProduct(
-                    product, inputProductDto.getBoxCount(), input, product.getReceivedCost());
+                    product, inputOutputProductDto.getBoxCount(), input, product.getReceivedCost());
             inputProduct = inputProductRepository.save(inputProduct);
-            costAllProducts += (long) inputProductDto.getBoxCount() * product.getReceivedCost() * product.getCountInBox();
+            costAllProducts += (long) inputOutputProductDto.getBoxCount() * product.getReceivedCost() * product.getCountInBox();
             product.setBalance(product.getBalance() + inputProduct.getBoxCount());
             productRepository.save(product);
         }

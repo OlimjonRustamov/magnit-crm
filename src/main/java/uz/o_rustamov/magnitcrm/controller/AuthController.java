@@ -2,6 +2,7 @@ package uz.o_rustamov.magnitcrm.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,12 +13,16 @@ import uz.o_rustamov.magnitcrm.service.AuthServiceImpl;
 
 import javax.validation.Valid;
 
+@Transactional
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
 
-    @Autowired
     AuthServiceImpl authService;
+
+    public AuthController(AuthServiceImpl authService) {
+        this.authService = authService;
+    }
 
     @PostMapping("/login")
     public HttpEntity<ApiResponse> login(@Valid @RequestBody LoginDto dto) {
