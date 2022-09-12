@@ -60,7 +60,7 @@ public class ProductServiceImpl implements ProductService {
                         fcm.sendNotiToOtherManagers("Mahsulot miqdori o'zgardi",
                                 product.getName() + " nomli mahsulot miqdori " + dto.getBalance() +
                                         " ga "+user.getFullName()+" tomonidan o'zgartirildi. Oldingi miqdor " + product.getBalance(), user.getFcmToken());
-                    } catch (FirebaseMessagingException e) {
+                    } catch (FirebaseMessagingException | IllegalArgumentException e) {
                         return FCM_ERROR;
                     }
                 }

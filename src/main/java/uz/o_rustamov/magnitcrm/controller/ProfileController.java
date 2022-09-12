@@ -49,7 +49,7 @@ public class ProfileController {
             fcm.sendNotification(notification.getTitle(), notification.getBody(),
                     "dwrA9euSQiSl3Pu6lp-9pF:APA91bGdh_VEQ4PRmVQOe-AiSs60c8T-cxLFwzmz3k3M_IztfLyjkr69lkbIHlFk1XT7sgqZdv4C6LXpXUvjZ_xOIckCaT8I2fb-Uhcm7hRm4dZiWGhzWs8BaRztkCjt5gR8ryyWpjOy");
             return SUCCESS;
-        } catch (FirebaseMessagingException e) {
+        } catch (FirebaseMessagingException | IllegalArgumentException e) {
             return ResponseEntity.status(406).body(new ApiResponse(e.getMessage(), 406, false, null));
         }
 

@@ -182,7 +182,7 @@ public class InputServiceImpl implements InputService {
             fcm.sendNotiToOtherManagers("Yangi mahsulotlar",
                     supplier.getName() + "'dan yangi mahsulotlar " + user.getFullName() +
                             " tomonidan kiritildi", user.getFcmToken());
-        } catch (FirebaseMessagingException e) {
+        } catch (FirebaseMessagingException | IllegalArgumentException ex) {
             return FCM_ERROR;
         }
         return SUCCESS;

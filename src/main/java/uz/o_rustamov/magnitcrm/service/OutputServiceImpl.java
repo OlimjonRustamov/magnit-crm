@@ -203,7 +203,7 @@ public class OutputServiceImpl implements OutputService {
             fcm.sendNotiToOtherManagers("Yangi zapravka", recipient.getName() + " ga mahsulotlar topshirildi. Manager:" + user.getFullName(), user.getFcmToken());
             if (recipient.getUser() != null && recipient.getUser().getFcmToken() != null)
                 fcm.sendNotification("Yangi zapravka", "Sizning nomingizga yangi zapravka yozildi. Manager:" + user.getFullName(), recipient.getUser().getFcmToken());
-        } catch (FirebaseMessagingException e) {
+        } catch (FirebaseMessagingException | IllegalArgumentException e) {
             return FCM_ERROR;
         }
         return SUCCESS;
