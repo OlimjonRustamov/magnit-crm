@@ -46,11 +46,15 @@ public class InputServiceImpl implements InputService {
     @Override
     public HttpEntity<ApiResponse> getAllInputs() {
         Map<String, Object> data = new HashMap<String, Object>();
-
-        long sumGivenMoney = inputRepository.sumGivenMoney();
-        long sumAllProductCost = inputRepository.sumAllProductsCost();
-        long countInputs = inputRepository.count();
-
+        long sumGivenMoney = 0L;
+        long sumAllProductCost = 0L;
+        long countInputs = 0L;
+        try {
+            sumGivenMoney = inputRepository.sumGivenMoney();
+            sumAllProductCost = inputRepository.sumAllProductsCost();
+            countInputs = inputRepository.count();
+        } catch (NullPointerException ignored) {
+        }
         data.put("inputs", inputRepository.findAllDesc());
         data.put("given_money", sumGivenMoney);
         data.put("all_product_cost", sumAllProductCost);
@@ -78,11 +82,15 @@ public class InputServiceImpl implements InputService {
             Date from = new Date(new SimpleDateFormat("dd.MM.yyyy").parse(fromDate).getTime());
             Date to = new Date(new SimpleDateFormat("dd.MM.yyyy").parse(toDate).getTime());
             Map<String, Object> data = new HashMap<String, Object>();
-
-            long sumGivenMoney = inputRepository.sumGivenMoney(from, to);
-            long sumAllProductCost = inputRepository.sumAllProductsCost(from, to);
-            long countInputs = inputRepository.countByPeriod(from, to);
-
+            long sumGivenMoney = 0L;
+            long sumAllProductCost = 0L;
+            long countInputs = 0L;
+            try {
+                sumGivenMoney = inputRepository.sumGivenMoney(from, to);
+                sumAllProductCost = inputRepository.sumAllProductsCost(from, to);
+                countInputs = inputRepository.countByPeriod(from, to);
+            } catch (NullPointerException ignored) {
+            }
             data.put("inputs", inputRepository.findAllByPeriod(from, to));
             data.put("given_money", sumGivenMoney);
             data.put("all_product_cost", sumAllProductCost);
@@ -97,16 +105,48 @@ public class InputServiceImpl implements InputService {
     @Override
     public HttpEntity<ApiResponse> getAllBySupplierId(Long supplierId) {
         Map<String, Object> data = new HashMap<String, Object>();
-        long sumGivenMoney = inputRepository.sumGivenMoney(supplierId);
-        long sumAllProductCost = inputRepository.sumAllProductsCost(supplierId);
-        long countInputs = inputRepository.countBySupplier_Id(supplierId);
-
+        long sumGivenMoney = 0L;
+        long sumAllProductCost = 0L;
+        long countInputs = 0L;
+        try {
+            sumGivenMoney = inputRepository.sumGivenMoney(supplierId);
+            sumAllProductCost = inputRepository.sumAllProductsCost(supplierId);
+            countInputs = inputRepository.countBySupplier_Id(supplierId);
+        } catch (NullPointerException ignored) {
+        }
         data.put("inputs", inputRepository.findAllBySupplier_Id(supplierId));
         data.put("given_money", sumGivenMoney);
         data.put("all_product_cost", sumAllProductCost);
         data.put("difference", sumAllProductCost - sumGivenMoney);
         data.put("count", countInputs);
         return ResponseEntity.ok(new ApiResponse(null, 200, true, data));
+    }
+
+    @Override
+    public HttpEntity<ApiResponse> getAllByPeriodAndSupplierId(String fromDate, String toDate, Long id) {
+        if (!supplierRepository.existsById(id)) return NOT_FOUND;
+        try {
+            Date from = new Date(new SimpleDateFormat("dd.MM.yyyy").parse(fromDate).getTime());
+            Date to = new Date(new SimpleDateFormat("dd.MM.yyyy").parse(toDate).getTime());
+            Map<String, Object> data = new HashMap<String, Object>();
+            long sumGivenMoney = 0L;
+            long sumAllProductCost = 0L;
+            long countInputs = 0L;
+            try {
+                sumGivenMoney = inputRepository.sumGivenMoney(from, to, id);
+                sumAllProductCost = inputRepository.sumAllProductsCost(from, to, id);
+                countInputs = inputRepository.countByPeriodAndSupplierId(from, to, id);
+            } catch (NullPointerException ignored) {
+            }
+            data.put("inputs", inputRepository.findAllByPeriodAndSupplierId(from, to, id));
+            data.put("given_money", sumGivenMoney);
+            data.put("all_product_cost", sumAllProductCost);
+            data.put("difference", sumAllProductCost - sumGivenMoney);
+            data.put("count", countInputs);
+            return ResponseEntity.ok(new ApiResponse(null, 200, true, data));
+        } catch (ParseException e) {
+            return PARSE_EXCEPTION;
+        }
     }
 
     @Override
@@ -141,7 +181,7 @@ public class InputServiceImpl implements InputService {
         try {
             fcm.sendNotiToOtherManagers("Yangi mahsulotlar",
                     supplier.getName() + "'dan yangi mahsulotlar " + user.getFullName() +
-                            " tomonidan kiritildi", user.getFcm_token());
+                            " tomonidan kiritildi", user.getFcmToken());
         } catch (FirebaseMessagingException e) {
             return FCM_ERROR;
         }

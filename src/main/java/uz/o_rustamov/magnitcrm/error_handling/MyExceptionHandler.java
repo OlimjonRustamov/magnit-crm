@@ -11,6 +11,9 @@ import uz.o_rustamov.magnitcrm.ApiResponse;
 
 import javax.servlet.ServletException;
 
+import static uz.o_rustamov.magnitcrm.Constants.TOKEN_EXPIRED;
+import static uz.o_rustamov.magnitcrm.Constants.YOU_DONT_HAVE_ACCESS;
+
 @ControllerAdvice
 public class MyExceptionHandler {
 
@@ -32,17 +35,13 @@ public class MyExceptionHandler {
 
     @ExceptionHandler(AccessDeniedException.class)
     public HttpEntity<ApiResponse> handleForbiddenException(AccessDeniedException ex) {
-        return ResponseEntity.status(403).body(new ApiResponse(
-                "Sizda ushbu amalni bajarish uchun ruxsat mavjud emas",
-                403, false, null));
+        return YOU_DONT_HAVE_ACCESS;
 
     }
 
     @ExceptionHandler(ServletException.class)
     public HttpEntity<ApiResponse> handleJwtExpiredException(ServletException ex) {
-        return ResponseEntity.status(401).body(new ApiResponse(
-                "Identifikatsiya ma'lumotlari eskirgan",
-                401, false, null));
+        return TOKEN_EXPIRED;
 
     }
 

@@ -15,6 +15,8 @@ public interface InputService {
 
     HttpEntity<ApiResponse> getAllBySupplierId(Long id);
 
+    HttpEntity<ApiResponse> getAllByPeriodAndSupplierId(String fromDate, String toDate, Long id);
+
     HttpEntity<ApiResponse> addInput(User user, InputDto dto);
 
     HttpEntity<ApiResponse> deleteInput(Long id);

@@ -47,10 +47,27 @@ public class OutputController {
         return outputService.getAllByRecipientId(recipientId);
     }
 
+    @PreAuthorize("hasAuthority('VIEW_OUTPUTS')")
+    @GetMapping("/recipient-and-date/{recipientId}")
+    public HttpEntity<ApiResponse> getOutputByRecipientId(@PathVariable long recipientId,
+                                                          @RequestParam String from, @RequestParam String to) {
+        return outputService.getOutputByDateAndRecipientId(from, to, recipientId);
+    }
+
     @PreAuthorize("hasAuthority('ADD_OUTPUT')")
     @PostMapping
     public HttpEntity<ApiResponse> addOutput(@CurrentUser User user, @Valid @RequestBody OutputDto dto) {
         return outputService.addOutput(user, dto);
+    }
+    @PreAuthorize("hasAuthority('DELETE_OUTPUT')")
+    @DeleteMapping("/{outputId}")
+    public HttpEntity<ApiResponse> deleteOutput(@PathVariable Long outputId) {
+        return outputService.deleteOutput(outputId);
+    }
+
+    @PostMapping("/confirm")
+    public HttpEntity<ApiResponse> confirmOutput(@CurrentUser User user,@RequestParam Long id) {
+        return outputService.confirmOutput(user, id);
     }
 
 }

@@ -41,7 +41,7 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Override
     public HttpEntity<ApiResponse> setFirebaseDeviceToken(User user, String deviceToken) {
-        user.setFcm_token(deviceToken);
+        user.setFcmToken(deviceToken);
         userRepository.save(user);
         return SUCCESS;
     }

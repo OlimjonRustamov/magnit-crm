@@ -1,7 +1,7 @@
 package uz.o_rustamov.magnitcrm.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonKey;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -34,6 +34,7 @@ public class User implements UserDetails {
     private Timestamp updatedAt;
 
     @Column(nullable = false)
+    @JsonProperty("full_name")
     private String fullName;
 
     @Column(nullable = false, unique = true)
@@ -44,11 +45,12 @@ public class User implements UserDetails {
     private String password;
 
     @Column(nullable = false)
+    @JsonProperty("phone_number")
     private String phoneNumber;
 
     @Column
     @JsonIgnore
-    private String fcm_token;
+    private String fcmToken;
 
     @ManyToOne
     Role role;

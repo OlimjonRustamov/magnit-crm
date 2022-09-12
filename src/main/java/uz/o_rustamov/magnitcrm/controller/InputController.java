@@ -47,6 +47,12 @@ public class InputController {
         return inputService.getAllBySupplierId(supplierId);
     }
 
+    @PreAuthorize("hasAuthority('VIEW_INPUTS')")
+    @GetMapping("/supplier-and-date")
+    public HttpEntity<ApiResponse> getInputByPeriodAndSupplierId(@RequestParam String from, @RequestParam String to, @RequestParam long supplier_id) {
+        return inputService.getAllByPeriodAndSupplierId(from, to, supplier_id);
+    }
+
     @PreAuthorize("hasAuthority('ADD_INPUT')")
     @PostMapping
     public HttpEntity<ApiResponse> addInput(@CurrentUser User user, @Valid @RequestBody InputDto dto) {

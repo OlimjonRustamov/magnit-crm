@@ -4,38 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="faaa8861-687c-42ec-8296-0809187b5572" name="Changes" comment="Input CRUD &amp; FCM send Noti to other managers">
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/OutputService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/OutputController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/Output.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/OutputProduct.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/error_handling/ReverseException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/payload/OutputDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/OutputProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/OutputRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/OutputServiceImpl.java" afterDir="false" />
+    <list default="true" id="faaa8861-687c-42ec-8296-0809187b5572" name="Changes" comment="Output 1st part &amp; Transactional annotation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/InputService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/InputService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/InputController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/InputController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/RecipientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/RecipientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/RoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/SupplierController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/SupplierController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/InputProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/InputProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/OutputController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/OutputController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/Output.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/Output.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/error_handling/MyExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/error_handling/MyExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/payload/ChangePasswordDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/payload/ChangePasswordDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/payload/InputDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/payload/InputDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/payload/InputProductDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/payload/InputOutputProductDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/payload/RecipientDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/payload/RecipientDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/payload/RoleDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/payload/RoleDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/payload/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/payload/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/InputProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/InputProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/InputRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/InputRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/OutputProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/OutputProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/OutputRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/OutputRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/InputServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/InputServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/OutputServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/OutputServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/ProfileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/ProfileServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/Constants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/payload/RoleDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/payload/RoleDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/controller/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/controller/RoleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/controller/RoleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/error_handling/MyExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/error_handling/MyExceptionHandler.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +127,9 @@
       <workItem from="1662725264267" duration="4736000" />
       <workItem from="1662782811640" duration="1016000" />
       <workItem from="1662790726116" duration="7695000" />
-      <workItem from="1662827089511" duration="1376000" />
+      <workItem from="1662827089511" duration="1539000" />
+      <workItem from="1662894012970" duration="2409000" />
+      <workItem from="1662962454354" duration="4473000" />
     </task>
     <task id="LOCAL-00001" summary="Project built &amp; login">
       <created>1662051658702</created>
@@ -203,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662731773382</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Output 1st part &amp; Transactional annotation">
+      <created>1662828584650</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1662828584650</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +228,7 @@
     <MESSAGE value="FCM configured" />
     <MESSAGE value="Set FCM device token &amp; test push notification" />
     <MESSAGE value="Input CRUD &amp; FCM send Noti to other managers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Input CRUD &amp; FCM send Noti to other managers" />
+    <MESSAGE value="Output 1st part &amp; Transactional annotation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Output 1st part &amp; Transactional annotation" />
   </component>
 </project>

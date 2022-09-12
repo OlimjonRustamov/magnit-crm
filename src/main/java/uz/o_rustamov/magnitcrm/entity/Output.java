@@ -42,7 +42,7 @@ public class Output {
         this.manager = manager;
         this.recipient = recipient;
         this.note = note;
-        this.checkedByClient = checkedByClient;
+        this.checkedByRecipient = checkedByClient;
     }
 
     @Column
@@ -61,7 +61,7 @@ public class Output {
 
     @Column
     @JsonProperty("checked_by_recipient")
-    boolean checkedByClient;
+    boolean checkedByRecipient;
 
 
 }

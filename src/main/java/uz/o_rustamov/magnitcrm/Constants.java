@@ -33,4 +33,11 @@ public class Constants {
 
     public static final HttpEntity<ApiResponse> FCM_ERROR = ResponseEntity.ok(new ApiResponse("Muvaffaqiyatli saqlandi. SMS yuborishda xatolik",
             200, true, null));
+    public static final HttpEntity<ApiResponse> YOU_DONT_HAVE_ACCESS = ResponseEntity.status(403).body(new ApiResponse(
+            "Sizda ushbu amalni bajarish uchun ruxsat mavjud emas",
+            403, false, null));
+    public static final HttpEntity<ApiResponse> TOKEN_EXPIRED = ResponseEntity.status(401).body(new ApiResponse(
+            "Identifikatsiya ma'lumotlari eskirgan",
+            401, false, null));
+
 }

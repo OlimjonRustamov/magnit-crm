@@ -1,8 +1,10 @@
 package uz.o_rustamov.magnitcrm.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import uz.o_rustamov.magnitcrm.entity.Output;
 
 import java.sql.Date;
@@ -26,6 +28,9 @@ public interface OutputRepository extends JpaRepository<Output, Long> {
     @Query(value = "select sum(taken_money) from output where date between :from and :to", nativeQuery = true)
     Long sumTakenMoney(Date from, Date to);
 
+    @Query(value = "select sum(taken_money) from output where date between :from and :to and recipient_id=:recipientId", nativeQuery = true)
+    Long sumTakenMoney(Date from, Date to, Long recipientId);
+
     @Query(value = "select sum(taken_money) from output where recipient_id=:recipientId", nativeQuery = true)
     Long sumTakenMoney(Long recipientId);
 
@@ -34,6 +39,9 @@ public interface OutputRepository extends JpaRepository<Output, Long> {
 
     @Query(value = "select sum(all_product_cost) from output where date between :from and :to", nativeQuery = true)
     Long sumAllProductsCost(Date from, Date to);
+
+    @Query(value = "select sum(all_product_cost) from output where date between :from and :to and recipient_id=:recipientId", nativeQuery = true)
+    Long sumAllProductsCost(Date from, Date to, Long recipientId);
 
     @Query(value = "select sum(all_product_cost) from output where recipient_id=:recipientId", nativeQuery = true)
     Long sumAllProductsCost(Long recipientId);
@@ -44,6 +52,14 @@ public interface OutputRepository extends JpaRepository<Output, Long> {
 
     @Query(value = "select count(*) from output where date between :from and :to", nativeQuery = true)
     Long countByPeriod(Date from, Date to);
+
+    @Query(value = "select count(*) from output where date between :from and :to and recipient_id=:recipientId", nativeQuery = true)
+    Long countByPeriodAndRecipient(Date from, Date to, Long recipientId);
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE output SET checked_by_client=true WHERE id=:outputId", nativeQuery = true)
+    void confirmOutput(Long outputId);
 
 
 }

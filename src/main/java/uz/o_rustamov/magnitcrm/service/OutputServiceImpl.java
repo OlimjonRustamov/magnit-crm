@@ -30,7 +30,7 @@ import static uz.o_rustamov.magnitcrm.Constants.*;
 public class OutputServiceImpl implements OutputService {
 
     FirebaseMessagingService fcm;
-    final RecipientRepository recipientRepository;
+    RecipientRepository recipientRepository;
 
     ProductRepository productRepository;
     OutputRepository outputRepository;
@@ -109,7 +109,32 @@ public class OutputServiceImpl implements OutputService {
 
     @Override
     public HttpEntity<ApiResponse> getOutputByDateAndRecipientId(String fromDate, String toDate, Long recipientId) {
-        return null;
+        Optional<Recipient> optionalRecipient = recipientRepository.findById(recipientId);
+        if (!optionalRecipient.isPresent()) return NOT_FOUND;
+        Recipient recipient = optionalRecipient.get();
+        try {
+            Date from = new Date(new SimpleDateFormat("dd.MM.yyyy").parse(fromDate).getTime());
+            Date to = new Date(new SimpleDateFormat("dd.MM.yyyy").parse(toDate).getTime());
+            Map<String, Object> data = new HashMap<String, Object>();
+            long sumTakenMoney = 0L;
+            long sumAllProductCost = 0L;
+            long countOutputs = 0L;
+            try {
+                sumTakenMoney = outputRepository.sumTakenMoney(from, to, recipientId);
+                sumAllProductCost = outputRepository.sumAllProductsCost(from, to, recipientId);
+                countOutputs = outputRepository.countByPeriodAndRecipient(from, to, recipientId);
+            } catch (NullPointerException ignored) {
+            }
+
+            data.put("outputs", outputRepository.findAllByPeriodAndRecipientId(from, to, recipientId));
+            data.put("taken_money", sumTakenMoney);
+            data.put("all_product_cost", sumAllProductCost);
+            data.put("difference", sumAllProductCost - sumTakenMoney);
+            data.put("count", countOutputs);
+            return ResponseEntity.ok(new ApiResponse(null, 200, true, data));
+        } catch (ParseException e) {
+            return PARSE_EXCEPTION;
+        }
     }
 
     @Override
@@ -146,24 +171,26 @@ public class OutputServiceImpl implements OutputService {
             return PARSE_EXCEPTION;
         }
         Recipient recipient = optionalRecipient.get();
-        Role role = recipient.getUser().getRole();
         Long costAllProducts = 0L;
         Output output = new Output(date, costAllProducts, dto.getTakenMoney(), user, recipient, dto.getNote(), false);
+        if (recipient.getUser() == null) {
+            output.setCheckedByRecipient(true);
+        }
         output = outputRepository.save(output);
         List<InputOutputProductDto> products = dto.getProductList();
         for (InputOutputProductDto inputOutputProductDto : products) {
             Optional<Product> optionalProduct = productRepository.findById(inputOutputProductDto.getProductId());
             if (!optionalProduct.isPresent()) throw new ReverseException("Mahsulot mavjud emas");
             Product product = optionalProduct.get();
-            if(product.getBalance()< inputOutputProductDto.getBoxCount())
+            if (product.getBalance() < inputOutputProductDto.getBoxCount())
                 throw new ReverseException("Mahsulot yetarli emas. Kichikroq miqdor belgilang");
             OutputProduct outputProduct = new OutputProduct(
                     product, inputOutputProductDto.getBoxCount(), output, product.getCostForDriver());
             outputProduct = outputProductRepository.save(outputProduct);
-            if (role == null) {
+            if (recipient.getUser() == null) {
                 costAllProducts += (long) inputOutputProductDto.getBoxCount() *
                         product.getCostForClient() * product.getCountInBox();
-            } else if (role.getName().equals(ROLE_DRIVER)) {
+            } else if (recipient.getUser().getRole().getName().equals(ROLE_DRIVER)) {
                 costAllProducts += (long) inputOutputProductDto.getBoxCount() *
                         product.getCostForDriver() * product.getCountInBox();
             }
@@ -173,9 +200,9 @@ public class OutputServiceImpl implements OutputService {
         output.setAllProductCost(costAllProducts);
         output = outputRepository.save(output);
         try {
-            fcm.sendNotiToOtherManagers("Yangi zapravka", recipient.getName() + " ga mahsulotlar topshirildi. Manager:" + user.getFullName(), user.getFcm_token());
-            if (recipient.getUser() != null)
-                fcm.sendNotification("Yangi zapravka", "Sizning nomingizga yangi zapravka yozildi. Manager:" + user.getFullName(), recipient.getUser().getFcm_token());
+            fcm.sendNotiToOtherManagers("Yangi zapravka", recipient.getName() + " ga mahsulotlar topshirildi. Manager:" + user.getFullName(), user.getFcmToken());
+            if (recipient.getUser() != null && recipient.getUser().getFcmToken() != null)
+                fcm.sendNotification("Yangi zapravka", "Sizning nomingizga yangi zapravka yozildi. Manager:" + user.getFullName(), recipient.getUser().getFcmToken());
         } catch (FirebaseMessagingException e) {
             return FCM_ERROR;
         }
@@ -184,11 +211,29 @@ public class OutputServiceImpl implements OutputService {
 
     @Override
     public HttpEntity<ApiResponse> deleteOutput(Long id) {
-        return null;
+        try {
+            outputProductRepository.deleteAllByOutput_Id(id);
+            outputRepository.deleteById(id);
+            return SUCCESS;
+        } catch (Exception e) {
+            return CONNECTED_WITH_OTHERS_EXCEPTION;
+        }
     }
 
     @Override
     public HttpEntity<ApiResponse> confirmOutput(User user, Long outputId) {
-        return null;
+        try {
+            Optional<Output> optionalOutput = outputRepository.findById(outputId);
+            if (!optionalOutput.isPresent()) return NOT_FOUND;
+            Output output = optionalOutput.get();
+            if (output.getRecipient().getUser().getId().equals(user.getId())) {
+                outputRepository.confirmOutput(outputId);
+                return SUCCESS;
+            } else {
+                return YOU_DONT_HAVE_ACCESS;
+            }
+        } catch (NullPointerException ex) {
+            return YOU_DONT_HAVE_ACCESS;
+        }
     }
 }
