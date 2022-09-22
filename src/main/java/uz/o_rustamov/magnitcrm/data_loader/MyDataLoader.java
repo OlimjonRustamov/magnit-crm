@@ -1,13 +1,16 @@
 package uz.o_rustamov.magnitcrm.data_loader;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import uz.o_rustamov.magnitcrm.entity.Recipient;
 import uz.o_rustamov.magnitcrm.entity.Role;
+import uz.o_rustamov.magnitcrm.entity.Supplier;
 import uz.o_rustamov.magnitcrm.entity.User;
 import uz.o_rustamov.magnitcrm.enums.Permission;
+import uz.o_rustamov.magnitcrm.repository.RecipientRepository;
 import uz.o_rustamov.magnitcrm.repository.RoleRepository;
+import uz.o_rustamov.magnitcrm.repository.SupplierRepository;
 import uz.o_rustamov.magnitcrm.repository.UserRepository;
 
 import java.util.Arrays;
@@ -19,12 +22,19 @@ import static uz.o_rustamov.magnitcrm.enums.Permission.*;
 @Component
 public class MyDataLoader implements CommandLineRunner {
 
-    @Autowired
     UserRepository userRepository;
-    @Autowired
+    RecipientRepository recipientRepository;
+    SupplierRepository supplierRepository;
     RoleRepository roleRepository;
-    @Autowired
     PasswordEncoder passwordEncoder;
+
+    public MyDataLoader(UserRepository userRepository, RecipientRepository recipientRepository, SupplierRepository supplierRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.recipientRepository = recipientRepository;
+        this.supplierRepository = supplierRepository;
+        this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public void run(String... args) throws Exception {
@@ -35,7 +45,35 @@ public class MyDataLoader implements CommandLineRunner {
         insertDriver();
 
         insertMarketStaff();
+
+        insertSuppliers();
+        insertRecipients();
     }
+
+    private void insertRecipients() {
+        if (!recipientRepository.existsByName("Bahrom aka Shofirkon")) {
+            recipientRepository.save(new Recipient("Bahrom aka Shofirkon"));
+        }
+    }
+
+    private void insertSuppliers() {
+        if (!supplierRepository.existsByName("Royal Muz Service")) {
+            supplierRepository.save(new Supplier("Royal Muz Service"));
+        }
+        if (!supplierRepository.existsByName("Mazira MChJ")) {
+            supplierRepository.save(new Supplier("Mazira MChJ"));
+        }
+        if (!supplierRepository.existsByName("Singaur Dairy Classic")) {
+            supplierRepository.save(new Supplier("Singaur Dairy Classic"));
+        }
+        if (!supplierRepository.existsByName("Ulug'bek aka(Buxoro)")) {
+            supplierRepository.save(new Supplier("Ulug'bek aka(Buxoro)"));
+        }
+        if (!supplierRepository.existsByName("Slayke Samarqand")) {
+            supplierRepository.save(new Supplier("Slayke Samarqand"));
+        }
+    }
+
 
     private void insertDeveloper() {
         //if developer role does not exist -> system will create it automatically
@@ -77,6 +115,16 @@ public class MyDataLoader implements CommandLineRunner {
                 userManager.setEnabled(true);
                 userManager = userRepository.save(userManager);
             }
+            if (!userRepository.existsByUsername(anvar_ziyodullayev)) {
+                User userManager = new User();
+                userManager.setUsername(anvar_ziyodullayev);
+                userManager.setFullName("Anvar Ziyodullayev");
+                userManager.setPassword(passwordEncoder.encode(anvar_ziyodullayev));
+                userManager.setPhoneNumber("+998919736688");
+                userManager.setRole(manager);
+                userManager.setEnabled(true);
+                userManager = userRepository.save(userManager);
+            }
         }
     }
 
@@ -89,24 +137,27 @@ public class MyDataLoader implements CommandLineRunner {
             driver.setPermissionList(Collections.singletonList(VIEW_MY_OUTPUTS));
             driver = roleRepository.save(driver);
             if (!userRepository.existsByUsername(asqar_akramov)) {
-                User userDriver = new User();
-                userDriver.setUsername(asqar_akramov);
-                userDriver.setFullName("Asqar Akramov");
-                userDriver.setPhoneNumber("+998907111485");
-                userDriver.setPassword(passwordEncoder.encode(asqar_akramov));
-                userDriver.setRole(driver);
-                userDriver.setEnabled(true);
-                userDriver = userRepository.save(userDriver);
+                User userAsqarAka = new User();
+                userAsqarAka.setUsername(asqar_akramov);
+                userAsqarAka.setFullName("Asqar Akramov");
+                userAsqarAka.setPhoneNumber("+998907111485");
+                userAsqarAka.setPassword(passwordEncoder.encode(asqar_akramov));
+                userAsqarAka.setRole(driver);
+                userAsqarAka.setEnabled(true);
+                userAsqarAka = userRepository.save(userAsqarAka);
+                recipientRepository.save(new Recipient("Asqar aka", userAsqarAka));
             }
             if (!userRepository.existsByUsername(bahriddin_umarov)) {
-                User userDriver = new User();
-                userDriver.setUsername(bahriddin_umarov);
-                userDriver.setFullName("Bahriddin Umarov");
-                userDriver.setPhoneNumber("+998973095088");
-                userDriver.setPassword(passwordEncoder.encode(bahriddin_umarov));
-                userDriver.setRole(driver);
-                userDriver.setEnabled(true);
-                userDriver = userRepository.save(userDriver);
+                User userBarisTogo = new User();
+                userBarisTogo.setUsername(bahriddin_umarov);
+                userBarisTogo.setFullName("Bahriddin Umarov");
+                userBarisTogo.setPhoneNumber("+998973095088");
+                userBarisTogo.setPassword(passwordEncoder.encode(bahriddin_umarov));
+                userBarisTogo.setRole(driver);
+                userBarisTogo.setEnabled(true);
+                userBarisTogo = userRepository.save(userBarisTogo);
+
+                recipientRepository.save(new Recipient("Baris tog'o", userBarisTogo));
             }
         }
     }

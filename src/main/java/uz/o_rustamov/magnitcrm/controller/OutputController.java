@@ -47,6 +47,12 @@ public class OutputController {
         return outputService.getAllByRecipientId(recipientId);
     }
 
+    @PreAuthorize("hasAuthority('VIEW_MY_OUTPUTS')")
+    @GetMapping("/my-outputs")
+    public HttpEntity<ApiResponse> getMyOutputs(@CurrentUser User user) {
+        return outputService.getMyOutputs(user);
+    }
+
     @PreAuthorize("hasAuthority('VIEW_OUTPUTS')")
     @GetMapping("/recipient-and-date/{recipientId}")
     public HttpEntity<ApiResponse> getOutputByRecipientId(@PathVariable long recipientId,

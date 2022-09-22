@@ -108,6 +108,30 @@ public class OutputServiceImpl implements OutputService {
     }
 
     @Override
+    public HttpEntity<ApiResponse> getMyOutputs(User user) {
+        Optional<Recipient> optionalRecipient = recipientRepository.findByUser_Id(user.getId());
+        if(!optionalRecipient.isPresent()) return NOT_FOUND;
+        long recipientId = optionalRecipient.get().getId();
+        Map<String, Object> data = new HashMap<String, Object>();
+        long sumTakenMoney = 0L;
+        long sumAllProductCost = 0L;
+        long countOutputs = 0L;
+        try {
+            sumTakenMoney = outputRepository.sumTakenMoney(recipientId);
+            sumAllProductCost = outputRepository.sumAllProductsCost(recipientId);
+            countOutputs = outputRepository.countByRecipient_Id(recipientId);
+        } catch (NullPointerException ignored) {
+        }
+
+        data.put("outputs", outputRepository.findAllByRecipient_Id(recipientId));
+        data.put("taken_money", sumTakenMoney);
+        data.put("all_product_cost", sumAllProductCost);
+        data.put("difference", sumAllProductCost - sumTakenMoney);
+        data.put("count", countOutputs);
+        return ResponseEntity.ok(new ApiResponse(null, 200, true, data));
+    }
+
+    @Override
     public HttpEntity<ApiResponse> getOutputByDateAndRecipientId(String fromDate, String toDate, Long recipientId) {
         Optional<Recipient> optionalRecipient = recipientRepository.findById(recipientId);
         if (!optionalRecipient.isPresent()) return NOT_FOUND;
