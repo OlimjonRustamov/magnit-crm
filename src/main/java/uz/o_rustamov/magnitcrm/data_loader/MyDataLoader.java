@@ -60,8 +60,8 @@ public class MyDataLoader implements CommandLineRunner {
         if (!supplierRepository.existsByName("Royal Muz Service")) {
             supplierRepository.save(new Supplier("Royal Muz Service"));
         }
-        if (!supplierRepository.existsByName("Mazira MChJ")) {
-            supplierRepository.save(new Supplier("Mazira MChJ"));
+        if (!supplierRepository.existsByName("Vazira MChJ")) {
+            supplierRepository.save(new Supplier("Vazira MChJ"));
         }
         if (!supplierRepository.existsByName("Singaur Dairy Classic")) {
             supplierRepository.save(new Supplier("Singaur Dairy Classic"));
