@@ -4,19 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="faaa8861-687c-42ec-8296-0809187b5572" name="Changes" comment="IllegalArgumentException fixed">
+    <list default="true" id="faaa8861-687c-42ec-8296-0809187b5572" name="Changes" comment="str changed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/OutputService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/OutputService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/OutputController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/OutputController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/data_loader/MyDataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/data_loader/MyDataLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/Recipient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/Recipient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/entity/Supplier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/RecipientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/RecipientRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/OutputRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/OutputRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/OutputServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/OutputServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/Constants.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/data_loader/MyDataLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/data_loader/MyDataLoader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/entity/User.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +117,7 @@
       <workItem from="1662894012970" duration="2409000" />
       <workItem from="1662962454354" duration="7376000" />
       <workItem from="1663216821342" duration="1928000" />
-      <workItem from="1663824715232" duration="376000" />
+      <workItem from="1663824715232" duration="1586000" />
     </task>
     <task id="LOCAL-00001" summary="Project built &amp; login">
       <created>1662051658702</created>
@@ -209,7 +203,21 @@
       <option name="project" value="LOCAL" />
       <updated>1662974165258</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="my-outputs &amp; default data">
+      <created>1663825119945</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1663825119945</updated>
+    </task>
+    <task id="LOCAL-00014" summary="str changed">
+      <created>1663825375916</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1663825375916</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,6 +247,8 @@
     <MESSAGE value="Output 1st part &amp; Transactional annotation" />
     <MESSAGE value="Transactional &amp; output full &amp; NullPointerEx fixed" />
     <MESSAGE value="IllegalArgumentException fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="IllegalArgumentException fixed" />
+    <MESSAGE value="my-outputs &amp; default data" />
+    <MESSAGE value="str changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="str changed" />
   </component>
 </project>

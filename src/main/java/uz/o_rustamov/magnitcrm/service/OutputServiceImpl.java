@@ -132,6 +132,38 @@ public class OutputServiceImpl implements OutputService {
     }
 
     @Override
+    public HttpEntity<ApiResponse> getMyOutputsAndDate(User user, String fromDate, String toDate) {
+        try {
+            Date from = new Date(new SimpleDateFormat("dd.MM.yyyy").parse(fromDate).getTime());
+            Date to = new Date(new SimpleDateFormat("dd.MM.yyyy").parse(toDate).getTime());
+
+            Optional<Recipient> optionalRecipient = recipientRepository.findByUser_Id(user.getId());
+            if(!optionalRecipient.isPresent()) return NOT_FOUND;
+            long recipientId = optionalRecipient.get().getId();
+
+            Map<String, Object> data = new HashMap<String, Object>();
+            long sumTakenMoney = 0L;
+            long sumAllProductCost = 0L;
+            long countOutputs = 0L;
+            try {
+                sumTakenMoney = outputRepository.sumTakenMoney(from, to, recipientId);
+                sumAllProductCost = outputRepository.sumAllProductsCost(from, to, recipientId);
+                countOutputs = outputRepository.countByPeriodAndRecipient(from, to, recipientId);
+            } catch (NullPointerException ignored) {
+            }
+
+            data.put("outputs", outputRepository.findAllByPeriodAndRecipientId(from, to, recipientId));
+            data.put("taken_money", sumTakenMoney);
+            data.put("all_product_cost", sumAllProductCost);
+            data.put("difference", sumAllProductCost - sumTakenMoney);
+            data.put("count", countOutputs);
+            return ResponseEntity.ok(new ApiResponse(null, 200, true, data));
+        } catch (ParseException e) {
+            return PARSE_EXCEPTION;
+        }
+    }
+
+    @Override
     public HttpEntity<ApiResponse> getOutputByDateAndRecipientId(String fromDate, String toDate, Long recipientId) {
         Optional<Recipient> optionalRecipient = recipientRepository.findById(recipientId);
         if (!optionalRecipient.isPresent()) return NOT_FOUND;

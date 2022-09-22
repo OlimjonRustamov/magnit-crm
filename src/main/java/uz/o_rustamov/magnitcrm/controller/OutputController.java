@@ -53,6 +53,12 @@ public class OutputController {
         return outputService.getMyOutputs(user);
     }
 
+    @PreAuthorize("hasAuthority('VIEW_MY_OUTPUTS')")
+    @GetMapping("/my-outputs-and-date")
+    public HttpEntity<ApiResponse> getMyOutputsAndDate(@CurrentUser User user, @RequestParam String from, @RequestParam String to) {
+        return outputService.getMyOutputsAndDate(user, from, to);
+    }
+
     @PreAuthorize("hasAuthority('VIEW_OUTPUTS')")
     @GetMapping("/recipient-and-date/{recipientId}")
     public HttpEntity<ApiResponse> getOutputByRecipientId(@PathVariable long recipientId,
@@ -65,6 +71,7 @@ public class OutputController {
     public HttpEntity<ApiResponse> addOutput(@CurrentUser User user, @Valid @RequestBody OutputDto dto) {
         return outputService.addOutput(user, dto);
     }
+
     @PreAuthorize("hasAuthority('DELETE_OUTPUT')")
     @DeleteMapping("/{outputId}")
     public HttpEntity<ApiResponse> deleteOutput(@PathVariable Long outputId) {
@@ -72,7 +79,7 @@ public class OutputController {
     }
 
     @PostMapping("/confirm")
-    public HttpEntity<ApiResponse> confirmOutput(@CurrentUser User user,@RequestParam Long id) {
+    public HttpEntity<ApiResponse> confirmOutput(@CurrentUser User user, @RequestParam Long id) {
         return outputService.confirmOutput(user, id);
     }
 

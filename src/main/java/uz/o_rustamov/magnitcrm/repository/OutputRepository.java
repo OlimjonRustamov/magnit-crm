@@ -58,7 +58,7 @@ public interface OutputRepository extends JpaRepository<Output, Long> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE output SET checked_by_client=true WHERE id=:outputId", nativeQuery = true)
+    @Query(value = "UPDATE output SET checked_by_recipient=true WHERE id=:outputId", nativeQuery = true)
     void confirmOutput(Long outputId);
 
 
