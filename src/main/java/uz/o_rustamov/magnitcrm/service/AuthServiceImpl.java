@@ -43,6 +43,7 @@ public class AuthServiceImpl implements AuthService {
             String token = jwtProvider.generateToken(dto.getUsername());
             Map<String, String> map = new HashMap<>();
             map.put("api_token", token);
+            map.put("role_name", user.getRole().getName());
             return ResponseEntity.ok(new ApiResponse(null, 200, true, map));
         }
         return ResponseEntity.status(409).body(
