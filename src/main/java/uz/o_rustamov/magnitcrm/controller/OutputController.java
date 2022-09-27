@@ -49,14 +49,14 @@ public class OutputController {
 
     @PreAuthorize("hasAuthority('VIEW_MY_OUTPUTS')")
     @GetMapping("/my-outputs")
-    public HttpEntity<ApiResponse> getMyOutputs(@CurrentUser User user) {
-        return outputService.getMyOutputs(user);
+    public HttpEntity<ApiResponse> getMyOutputs(@CurrentUser User user, @RequestParam int page, @RequestParam int size) {
+        return outputService.getMyOutputs(user, page, size);
     }
 
     @PreAuthorize("hasAuthority('VIEW_MY_OUTPUTS')")
     @GetMapping("/my-outputs-and-date")
-    public HttpEntity<ApiResponse> getMyOutputsAndDate(@CurrentUser User user, @RequestParam String from, @RequestParam String to) {
-        return outputService.getMyOutputsAndDate(user, from, to);
+    public HttpEntity<ApiResponse> getMyOutputsAndDate(@CurrentUser User user, @RequestParam String from, @RequestParam String to, @RequestParam int page, int size) {
+        return outputService.getMyOutputsAndDate(user, from, to, page, size);
     }
 
     @PreAuthorize("hasAuthority('VIEW_OUTPUTS')")

@@ -1,5 +1,7 @@
 package uz.o_rustamov.magnitcrm.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,7 +19,7 @@ public interface OutputRepository extends JpaRepository<Output, Long> {
     List<Output> findAllByPeriod(Date from, Date to);
 
     @Query(value = "select * from output where date between :from and :to and recipient_id=:recipientId order by date asc", nativeQuery = true)
-    List<Output> findAllByPeriodAndRecipientId(Date from, Date to, Long recipientId);
+    List<Output> findAllByPeriodAndRecipientId(Date from, Date to, Long recipientId, Pageable pageable);
 
     @Query(value = "select * from output order by date desc", nativeQuery = true)
     List<Output> findAllDesc();
@@ -46,7 +48,7 @@ public interface OutputRepository extends JpaRepository<Output, Long> {
     @Query(value = "select sum(all_product_cost) from output where recipient_id=:recipientId", nativeQuery = true)
     Long sumAllProductsCost(Long recipientId);
 
-    List<Output> findAllByRecipient_Id(Long recipient_id);
+    List<Output> findAllByRecipient_Id(Long recipient_id, Pageable pageable);
 
     Long countByRecipient_Id(Long recipient_id);
 

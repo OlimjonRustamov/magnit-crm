@@ -1,6 +1,8 @@
 package uz.o_rustamov.magnitcrm.service;
 
 import com.google.firebase.messaging.FirebaseMessagingException;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -108,7 +110,7 @@ public class OutputServiceImpl implements OutputService {
     }
 
     @Override
-    public HttpEntity<ApiResponse> getMyOutputs(User user) {
+    public HttpEntity<ApiResponse> getMyOutputs(User user, int page,int size) {
         Optional<Recipient> optionalRecipient = recipientRepository.findByUser_Id(user.getId());
         if(!optionalRecipient.isPresent()) return NOT_FOUND;
         long recipientId = optionalRecipient.get().getId();
@@ -122,8 +124,9 @@ public class OutputServiceImpl implements OutputService {
             countOutputs = outputRepository.countByRecipient_Id(recipientId);
         } catch (NullPointerException ignored) {
         }
-
-        data.put("outputs", outputRepository.findAllByRecipient_Id(recipientId));
+        //starting page index is 0, from app it will be 1
+        Pageable pageable = PageRequest.of(page-1, size);
+        data.put("outputs", outputRepository.findAllByRecipient_Id(recipientId, pageable));
         data.put("taken_money", sumTakenMoney);
         data.put("all_product_cost", sumAllProductCost);
         data.put("difference", sumAllProductCost - sumTakenMoney);
@@ -132,7 +135,7 @@ public class OutputServiceImpl implements OutputService {
     }
 
     @Override
-    public HttpEntity<ApiResponse> getMyOutputsAndDate(User user, String fromDate, String toDate) {
+    public HttpEntity<ApiResponse> getMyOutputsAndDate(User user, String fromDate, String toDate, int page, int size) {
         try {
             Date from = new Date(new SimpleDateFormat("dd.MM.yyyy").parse(fromDate).getTime());
             Date to = new Date(new SimpleDateFormat("dd.MM.yyyy").parse(toDate).getTime());
@@ -151,8 +154,8 @@ public class OutputServiceImpl implements OutputService {
                 countOutputs = outputRepository.countByPeriodAndRecipient(from, to, recipientId);
             } catch (NullPointerException ignored) {
             }
-
-            data.put("outputs", outputRepository.findAllByPeriodAndRecipientId(from, to, recipientId));
+            Pageable pageable = PageRequest.of(page - 1, size);
+            data.put("outputs", outputRepository.findAllByPeriodAndRecipientId(from, to, recipientId, pageable));
             data.put("taken_money", sumTakenMoney);
             data.put("all_product_cost", sumAllProductCost);
             data.put("difference", sumAllProductCost - sumTakenMoney);
@@ -182,7 +185,7 @@ public class OutputServiceImpl implements OutputService {
             } catch (NullPointerException ignored) {
             }
 
-            data.put("outputs", outputRepository.findAllByPeriodAndRecipientId(from, to, recipientId));
+            data.put("outputs", outputRepository.findAllByPeriodAndRecipientId(from, to, recipientId, null));
             data.put("taken_money", sumTakenMoney);
             data.put("all_product_cost", sumAllProductCost);
             data.put("difference", sumAllProductCost - sumTakenMoney);
@@ -208,7 +211,7 @@ public class OutputServiceImpl implements OutputService {
         } catch (NullPointerException ignored) {
         }
 
-        data.put("outputs", outputRepository.findAllByRecipient_Id(recipientId));
+        data.put("outputs", outputRepository.findAllByRecipient_Id(recipientId, null));
         data.put("taken_money", sumTakenMoney);
         data.put("all_product_cost", sumAllProductCost);
         data.put("difference", sumAllProductCost - sumTakenMoney);
