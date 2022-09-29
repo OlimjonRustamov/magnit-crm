@@ -15,6 +15,7 @@ public interface OutputService {
 
     HttpEntity<ApiResponse> getMyOutputs(User user, int page, int size);
     HttpEntity<ApiResponse> getMyOutputsAndDate(User user, String fromDate, String toDate, int page, int size);
+    HttpEntity<ApiResponse> getMyOutputsAndDateData(User user, String fromDate, String toDate);
 
     HttpEntity<ApiResponse> getOutputByDateAndRecipientId(String fromDate, String toDate, Long recipientId);
 
