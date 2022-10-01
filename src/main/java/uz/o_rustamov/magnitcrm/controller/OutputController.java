@@ -29,7 +29,7 @@ public class OutputController {
         return outputService.getAllOutputs();
     }
 
-    @PreAuthorize("hasAuthority('VIEW_OUTPUTS')")
+    @PreAuthorize("hasAnyAuthority('VIEW_OUTPUTS', 'VIEW_MY_OUTPUTS')")
     @GetMapping("/id/{id}")
     public HttpEntity<ApiResponse> getOutputById(@PathVariable long id) {
         return outputService.getOutputById(id);

@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="faaa8861-687c-42ec-8296-0809187b5572" name="Changes" comment="my-outputs pagination">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/OutputService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/OutputService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/OutputController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/OutputController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/OutputServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/OutputServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/service/AuthServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uz/o_rustamov/magnitcrm/service/AuthServiceImpl.class" afterDir="false" />
-    </list>
+    <list default="true" id="faaa8861-687c-42ec-8296-0809187b5572" name="Changes" comment="my-outputs pagination seperated from info" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -119,7 +113,7 @@
       <workItem from="1663824715232" duration="1882000" />
       <workItem from="1664257289559" duration="287000" />
       <workItem from="1664278347990" duration="1519000" />
-      <workItem from="1664426671618" duration="381000" />
+      <workItem from="1664426671618" duration="624000" />
     </task>
     <task id="LOCAL-00001" summary="Project built &amp; login">
       <created>1662051658702</created>
@@ -240,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664279802120</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="my-outputs pagination seperated from info">
+      <created>1664427288860</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1664427288860</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,6 +276,7 @@
     <MESSAGE value="my outputs by date" />
     <MESSAGE value="roleName added auth" />
     <MESSAGE value="my-outputs pagination" />
-    <option name="LAST_COMMIT_MESSAGE" value="my-outputs pagination" />
+    <MESSAGE value="my-outputs pagination seperated from info" />
+    <option name="LAST_COMMIT_MESSAGE" value="my-outputs pagination seperated from info" />
   </component>
 </project>
