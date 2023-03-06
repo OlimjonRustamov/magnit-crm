@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="server2.ahost.cloud" id="d9739877-3a76-4de3-9963-ab2761b237a0" port="30151" nameFormat="DESCRIPTIVE" username="magnitcr" useOpenSSHConfig="true" />
+    </configs>
+  </component>
+</project>
