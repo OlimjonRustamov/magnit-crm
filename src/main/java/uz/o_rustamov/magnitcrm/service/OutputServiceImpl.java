@@ -50,7 +50,7 @@ public class OutputServiceImpl implements OutputService {
 
 
     @Override
-    public HttpEntity<ApiResponse> getAllOutputs() {
+    public HttpEntity<ApiResponse> getAllOutputs(int page, int size) {
         Map<String, Object> data = new HashMap<String, Object>();
 
         long sumTakenMoney = 0L;
@@ -62,7 +62,7 @@ public class OutputServiceImpl implements OutputService {
             countOutputs = outputRepository.count();
         } catch (NullPointerException ignored) {
         }
-        data.put("outputs", outputRepository.findAllDesc());
+        data.put("outputs", outputRepository.findAllDesc(PageRequest.of(page, size)));
         data.put("taken_money", sumTakenMoney);
         data.put("all_product_cost", sumAllProductCost);
         data.put("difference", sumAllProductCost - sumTakenMoney);
@@ -83,7 +83,7 @@ public class OutputServiceImpl implements OutputService {
     }
 
     @Override
-    public HttpEntity<ApiResponse> getOutputByDate(String fromDate, String toDate) {
+    public HttpEntity<ApiResponse> getOutputByDate(String fromDate, String toDate, int page, int size) {
         try {
             Date from = new Date(new SimpleDateFormat("dd.MM.yyyy").parse(fromDate).getTime());
             Date to = new Date(new SimpleDateFormat("dd.MM.yyyy").parse(toDate).getTime());
@@ -98,7 +98,7 @@ public class OutputServiceImpl implements OutputService {
             } catch (NullPointerException ignored) {
             }
 
-            data.put("outputs", outputRepository.findAllByPeriod(from, to));
+            data.put("outputs", outputRepository.findAllByPeriod(from, to, PageRequest.of(page, size)));
             data.put("taken_money", sumTakenMoney);
             data.put("all_product_cost", sumAllProductCost);
             data.put("difference", sumAllProductCost - sumTakenMoney);
@@ -144,22 +144,22 @@ public class OutputServiceImpl implements OutputService {
             if(!optionalRecipient.isPresent()) return NOT_FOUND;
             long recipientId = optionalRecipient.get().getId();
 
-//            Map<String, Object> data = new HashMap<String, Object>();
-//            long sumTakenMoney = 0L;
-//            long sumAllProductCost = 0L;
-//            long countOutputs = 0L;
-//            try {
-//                sumTakenMoney = outputRepository.sumTakenMoney(from, to, recipientId);
-//                sumAllProductCost = outputRepository.sumAllProductsCost(from, to, recipientId);
-//                countOutputs = outputRepository.countByPeriodAndRecipient(from, to, recipientId);
-//            } catch (NullPointerException ignored) {
-//            }
+            Map<String, Object> data = new HashMap<String, Object>();
+            long sumTakenMoney = 0L;
+            long sumAllProductCost = 0L;
+            long countOutputs = 0L;
+            try {
+                sumTakenMoney = outputRepository.sumTakenMoney(from, to, recipientId);
+                sumAllProductCost = outputRepository.sumAllProductsCost(from, to, recipientId);
+                countOutputs = outputRepository.countByPeriodAndRecipient(from, to, recipientId);
+            } catch (NullPointerException ignored) {
+            }
             Pageable pageable = PageRequest.of(page - 1, size);
-//            data.put("outputs", outputRepository.findAllByPeriodAndRecipientId(from, to, recipientId, pageable));
-//            data.put("taken_money", sumTakenMoney);
-//            data.put("all_product_cost", sumAllProductCost);
-//            data.put("difference", sumAllProductCost - sumTakenMoney);
-//            data.put("count", countOutputs);
+            data.put("outputs", outputRepository.findAllByPeriodAndRecipientId(from, to, recipientId, pageable));
+            data.put("taken_money", sumTakenMoney);
+            data.put("all_product_cost", sumAllProductCost);
+            data.put("difference", sumAllProductCost - sumTakenMoney);
+            data.put("count", countOutputs);
             return ResponseEntity.ok(new ApiResponse(null, 200, true,
                     outputRepository.findAllByPeriodAndRecipientId(from, to, recipientId, pageable)));
         } catch (ParseException e) {
@@ -168,7 +168,7 @@ public class OutputServiceImpl implements OutputService {
     }
 
     @Override
-    public HttpEntity<ApiResponse> getMyOutputsAndDateData(User user, String fromDate, String toDate) {
+    public HttpEntity<ApiResponse> getMyOutputsAndDateData(User user, String fromDate, String toDate, int page, int size) {
         try {
             Date from = new Date(new SimpleDateFormat("dd.MM.yyyy").parse(fromDate).getTime());
             Date to = new Date(new SimpleDateFormat("dd.MM.yyyy").parse(toDate).getTime());
@@ -191,6 +191,7 @@ public class OutputServiceImpl implements OutputService {
             data.put("all_product_cost", sumAllProductCost);
             data.put("difference", sumAllProductCost - sumTakenMoney);
             data.put("count", countOutputs);
+            data.put("outputs", outputRepository.findAllByPeriodAndRecipientId(from, to, recipientId, PageRequest.of(page, size)));
             return ResponseEntity.ok(new ApiResponse(null, 200, true, data));
         } catch (ParseException e) {
             return PARSE_EXCEPTION;
@@ -198,7 +199,7 @@ public class OutputServiceImpl implements OutputService {
     }
 
     @Override
-    public HttpEntity<ApiResponse> getOutputByDateAndRecipientId(String fromDate, String toDate, Long recipientId) {
+    public HttpEntity<ApiResponse> getOutputByDateAndRecipientId(String fromDate, String toDate, Long recipientId, int page, int size) {
         Optional<Recipient> optionalRecipient = recipientRepository.findById(recipientId);
         if (!optionalRecipient.isPresent()) return NOT_FOUND;
         Recipient recipient = optionalRecipient.get();
@@ -216,7 +217,7 @@ public class OutputServiceImpl implements OutputService {
             } catch (NullPointerException ignored) {
             }
 
-            data.put("outputs", outputRepository.findAllByPeriodAndRecipientId(from, to, recipientId, null));
+            data.put("outputs", outputRepository.findAllByPeriodAndRecipientId(from, to, recipientId, PageRequest.of(page, size)));
             data.put("taken_money", sumTakenMoney);
             data.put("all_product_cost", sumAllProductCost);
             data.put("difference", sumAllProductCost - sumTakenMoney);
@@ -228,7 +229,7 @@ public class OutputServiceImpl implements OutputService {
     }
 
     @Override
-    public HttpEntity<ApiResponse> getAllByRecipientId(Long recipientId) {
+    public HttpEntity<ApiResponse> getAllByRecipientId(Long recipientId, int page, int size) {
         Optional<Recipient> optionalRecipient = recipientRepository.findById(recipientId);
         if (!optionalRecipient.isPresent()) return NOT_FOUND;
         Map<String, Object> data = new HashMap<String, Object>();
@@ -242,7 +243,7 @@ public class OutputServiceImpl implements OutputService {
         } catch (NullPointerException ignored) {
         }
 
-        data.put("outputs", outputRepository.findAllByRecipient_Id(recipientId, null));
+        data.put("outputs", outputRepository.findAllByRecipient_Id(recipientId, PageRequest.of(page, size)));
         data.put("taken_money", sumTakenMoney);
         data.put("all_product_cost", sumAllProductCost);
         data.put("difference", sumAllProductCost - sumTakenMoney);

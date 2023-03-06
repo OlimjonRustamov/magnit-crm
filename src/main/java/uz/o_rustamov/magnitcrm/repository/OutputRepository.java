@@ -16,13 +16,13 @@ import java.util.List;
 public interface OutputRepository extends JpaRepository<Output, Long> {
 
     @Query(value = "select * from output where date between :from and :to order by date asc", nativeQuery = true)
-    List<Output> findAllByPeriod(Date from, Date to);
+    List<Output> findAllByPeriod(Date from, Date to, Pageable pageable);
 
     @Query(value = "select * from output where date between :from and :to and recipient_id=:recipientId order by date asc", nativeQuery = true)
     List<Output> findAllByPeriodAndRecipientId(Date from, Date to, Long recipientId, Pageable pageable);
 
     @Query(value = "select * from output order by date desc", nativeQuery = true)
-    List<Output> findAllDesc();
+    List<Output> findAllDesc(Pageable pageable);
 
     @Query(value = "select sum(taken_money) from output", nativeQuery = true)
     Long sumTakenMoney();

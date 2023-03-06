@@ -25,8 +25,8 @@ public class OutputController {
 
     @PreAuthorize("hasAuthority('VIEW_OUTPUTS')")
     @GetMapping
-    public HttpEntity<ApiResponse> getAllOutputs() {
-        return outputService.getAllOutputs();
+    public HttpEntity<ApiResponse> getAllOutputs(@RequestParam("page") int page, @RequestParam("size") int size) {
+        return outputService.getAllOutputs(page, size);
     }
 
     @PreAuthorize("hasAnyAuthority('VIEW_OUTPUTS', 'VIEW_MY_OUTPUTS')")
@@ -37,14 +37,16 @@ public class OutputController {
 
     @PreAuthorize("hasAuthority('VIEW_OUTPUTS')")
     @GetMapping("/date")
-    public HttpEntity<ApiResponse> getOutputByDate(@RequestParam String from, @RequestParam String to) {
-        return outputService.getOutputByDate(from, to);
+    public HttpEntity<ApiResponse> getOutputByDate(@RequestParam String from, @RequestParam String to,
+                                                   @RequestParam("page") int page, @RequestParam("size") int size) {
+        return outputService.getOutputByDate(from, to, page, size);
     }
 
     @PreAuthorize("hasAuthority('VIEW_OUTPUTS')")
     @GetMapping("/recipient/{recipientId}")
-    public HttpEntity<ApiResponse> getOutputByRecipientId(@PathVariable long recipientId) {
-        return outputService.getAllByRecipientId(recipientId);
+    public HttpEntity<ApiResponse> getOutputByRecipientId(@PathVariable long recipientId,
+                                                          @RequestParam("page") int page, @RequestParam("size") int size) {
+        return outputService.getAllByRecipientId(recipientId, page, size);
     }
 
     @PreAuthorize("hasAuthority('VIEW_MY_OUTPUTS')")
@@ -61,15 +63,16 @@ public class OutputController {
 
     @PreAuthorize("hasAuthority('VIEW_MY_OUTPUTS')")
     @GetMapping("/my-outputs-and-date-info")
-    public HttpEntity<ApiResponse> getMyOutputsAndDateInfo(@CurrentUser User user, @RequestParam String from, @RequestParam String to) {
-        return outputService.getMyOutputsAndDateData(user, from, to);
+    public HttpEntity<ApiResponse> getMyOutputsAndDateInfo(@CurrentUser User user, @RequestParam String from, @RequestParam String to, @RequestParam("page") int page, @RequestParam("size") int size) {
+        return outputService.getMyOutputsAndDateData(user, from, to, page, size);
     }
 
     @PreAuthorize("hasAuthority('VIEW_OUTPUTS')")
     @GetMapping("/recipient-and-date/{recipientId}")
     public HttpEntity<ApiResponse> getOutputByRecipientId(@PathVariable long recipientId,
-                                                          @RequestParam String from, @RequestParam String to) {
-        return outputService.getOutputByDateAndRecipientId(from, to, recipientId);
+                                                          @RequestParam String from, @RequestParam String to,
+                                                          @RequestParam("page") int page, @RequestParam("size") int size) {
+        return outputService.getOutputByDateAndRecipientId(from, to, recipientId, page, size);
     }
 
     @PreAuthorize("hasAuthority('ADD_OUTPUT')")
