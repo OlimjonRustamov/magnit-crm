@@ -56,7 +56,7 @@ public class JwtFilter extends OncePerRequestFilter {
                 message,
                 400, false, null);
 
-        response.setStatus(401);
+        response.setStatus(400);
         response.setContentType("application/json");
         String json = new ObjectMapper().writer().writeValueAsString(errorResponse);
         response.getWriter().write(json);

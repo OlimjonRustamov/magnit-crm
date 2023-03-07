@@ -9,10 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="faaa8861-687c-42ec-8296-0809187b5572" name="Changes" comment="input pagination added">
-      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/configuration/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/configuration/JwtFilter.java" afterDir="false" />
-    </list>
+    <list default="true" id="faaa8861-687c-42ec-8296-0809187b5572" name="Changes" comment="401 error fixed" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -151,7 +148,7 @@
       <workItem from="1664426671618" duration="624000" />
       <workItem from="1677819910990" duration="2495000" />
       <workItem from="1678093149167" duration="5333000" />
-      <workItem from="1678106192024" duration="1683000" />
+      <workItem from="1678106192024" duration="2004000" />
     </task>
     <task id="LOCAL-00001" summary="Project built &amp; login">
       <created>1662051658702</created>
@@ -300,7 +297,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678162024471</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="401 error fixed">
+      <created>1678162812640</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1678162812640</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,6 +343,7 @@
     <MESSAGE value="database digital ocean" />
     <MESSAGE value="output pagination added" />
     <MESSAGE value="input pagination added" />
-    <option name="LAST_COMMIT_MESSAGE" value="input pagination added" />
+    <MESSAGE value="401 error fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="401 error fixed" />
   </component>
 </project>
