@@ -1,5 +1,6 @@
 package uz.o_rustamov.magnitcrm.repository;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -12,13 +13,13 @@ import java.util.List;
 public interface InputRepository extends JpaRepository<Input, Long> {
 
     @Query(value = "select * from input where date between :from and :to order by date asc", nativeQuery = true)
-    List<Input> findAllByPeriod(Date from, Date to);
+    List<Input> findAllByPeriod(Date from, Date to, Pageable pageable);
 
     @Query(value = "select * from input where date between :from and :to and supplier_id=:supplierId order by date asc", nativeQuery = true)
-    List<Input> findAllByPeriodAndSupplierId(Date from, Date to, Long supplierId);
+    List<Input> findAllByPeriodAndSupplierId(Date from, Date to, Long supplierId, Pageable pageable);
 
     @Query(value = "select * from input order by date desc", nativeQuery = true)
-    List<Input> findAllDesc();
+    List<Input> findAllDesc(Pageable pageable);
 
     @Query(value = "select sum(given_money) from input", nativeQuery = true)
     Long sumGivenMoney();
@@ -44,7 +45,7 @@ public interface InputRepository extends JpaRepository<Input, Long> {
     @Query(value = "select sum(all_product_cost) from input where supplier_id=:supplierId", nativeQuery = true)
     Long sumAllProductsCost(Long supplierId);
 
-    List<Input> findAllBySupplier_Id(Long supplier_id);
+    List<Input> findAllBySupplier_Id(Long supplier_id, Pageable pageable);
 
     @Query(value = "select count(*) from input where date between :from and :to", nativeQuery = true)
     Long countByPeriod(Date from, Date to);

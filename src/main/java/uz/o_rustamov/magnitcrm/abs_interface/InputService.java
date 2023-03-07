@@ -7,15 +7,15 @@ import uz.o_rustamov.magnitcrm.payload.InputDto;
 
 public interface InputService {
 
-    HttpEntity<ApiResponse> getAllInputs();
+    HttpEntity<ApiResponse> getAllInputs(int page, int size);
 
     HttpEntity<ApiResponse> getInputById(Long id);
 
-    HttpEntity<ApiResponse> getInputByDate(String fromDate, String toDate);
+    HttpEntity<ApiResponse> getInputByDate(String fromDate, String toDate, int page, int size);
 
-    HttpEntity<ApiResponse> getAllBySupplierId(Long id);
+    HttpEntity<ApiResponse> getAllBySupplierId(Long id, int page, int size);
 
-    HttpEntity<ApiResponse> getAllByPeriodAndSupplierId(String fromDate, String toDate, Long id);
+    HttpEntity<ApiResponse> getAllByPeriodAndSupplierId(String fromDate, String toDate, Long id, int page, int size);
 
     HttpEntity<ApiResponse> addInput(User user, InputDto dto);
 

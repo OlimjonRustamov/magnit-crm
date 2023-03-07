@@ -1,6 +1,7 @@
 package uz.o_rustamov.magnitcrm.service;
 
 import com.google.firebase.messaging.FirebaseMessagingException;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -44,7 +45,7 @@ public class InputServiceImpl implements InputService {
     }
 
     @Override
-    public HttpEntity<ApiResponse> getAllInputs() {
+    public HttpEntity<ApiResponse> getAllInputs(int page, int size) {
         Map<String, Object> data = new HashMap<String, Object>();
         long sumGivenMoney = 0L;
         long sumAllProductCost = 0L;
@@ -55,7 +56,7 @@ public class InputServiceImpl implements InputService {
             countInputs = inputRepository.count();
         } catch (NullPointerException ignored) {
         }
-        data.put("inputs", inputRepository.findAllDesc());
+        data.put("inputs", inputRepository.findAllDesc(PageRequest.of(page, size)));
         data.put("given_money", sumGivenMoney);
         data.put("all_product_cost", sumAllProductCost);
         data.put("difference", sumAllProductCost - sumGivenMoney);
@@ -77,7 +78,7 @@ public class InputServiceImpl implements InputService {
     }
 
     @Override
-    public HttpEntity<ApiResponse> getInputByDate(String fromDate, String toDate) {
+    public HttpEntity<ApiResponse> getInputByDate(String fromDate, String toDate, int page, int size) {
         try {
             Date from = new Date(new SimpleDateFormat("dd.MM.yyyy").parse(fromDate).getTime());
             Date to = new Date(new SimpleDateFormat("dd.MM.yyyy").parse(toDate).getTime());
@@ -91,7 +92,7 @@ public class InputServiceImpl implements InputService {
                 countInputs = inputRepository.countByPeriod(from, to);
             } catch (NullPointerException ignored) {
             }
-            data.put("inputs", inputRepository.findAllByPeriod(from, to));
+            data.put("inputs", inputRepository.findAllByPeriod(from, to, PageRequest.of(page, size)));
             data.put("given_money", sumGivenMoney);
             data.put("all_product_cost", sumAllProductCost);
             data.put("difference", sumAllProductCost - sumGivenMoney);
@@ -103,7 +104,7 @@ public class InputServiceImpl implements InputService {
     }
 
     @Override
-    public HttpEntity<ApiResponse> getAllBySupplierId(Long supplierId) {
+    public HttpEntity<ApiResponse> getAllBySupplierId(Long supplierId, int page, int size) {
         Map<String, Object> data = new HashMap<String, Object>();
         long sumGivenMoney = 0L;
         long sumAllProductCost = 0L;
@@ -114,7 +115,7 @@ public class InputServiceImpl implements InputService {
             countInputs = inputRepository.countBySupplier_Id(supplierId);
         } catch (NullPointerException ignored) {
         }
-        data.put("inputs", inputRepository.findAllBySupplier_Id(supplierId));
+        data.put("inputs", inputRepository.findAllBySupplier_Id(supplierId, PageRequest.of(page, size)));
         data.put("given_money", sumGivenMoney);
         data.put("all_product_cost", sumAllProductCost);
         data.put("difference", sumAllProductCost - sumGivenMoney);
@@ -123,7 +124,7 @@ public class InputServiceImpl implements InputService {
     }
 
     @Override
-    public HttpEntity<ApiResponse> getAllByPeriodAndSupplierId(String fromDate, String toDate, Long id) {
+    public HttpEntity<ApiResponse> getAllByPeriodAndSupplierId(String fromDate, String toDate, Long id, int page, int size) {
         if (!supplierRepository.existsById(id)) return NOT_FOUND;
         try {
             Date from = new Date(new SimpleDateFormat("dd.MM.yyyy").parse(fromDate).getTime());
@@ -138,7 +139,7 @@ public class InputServiceImpl implements InputService {
                 countInputs = inputRepository.countByPeriodAndSupplierId(from, to, id);
             } catch (NullPointerException ignored) {
             }
-            data.put("inputs", inputRepository.findAllByPeriodAndSupplierId(from, to, id));
+            data.put("inputs", inputRepository.findAllByPeriodAndSupplierId(from, to, id, PageRequest.of(page, size)));
             data.put("given_money", sumGivenMoney);
             data.put("all_product_cost", sumAllProductCost);
             data.put("difference", sumAllProductCost - sumGivenMoney);

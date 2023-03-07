@@ -9,12 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="faaa8861-687c-42ec-8296-0809187b5572" name="Changes" comment="database digital ocean">
+    <list default="true" id="faaa8861-687c-42ec-8296-0809187b5572" name="Changes" comment="output pagination added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/OutputService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/OutputService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/OutputController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/OutputController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/OutputRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/OutputRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/OutputServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/OutputServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/InputService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/abs_interface/InputService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/InputController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/controller/InputController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/InputRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/repository/InputRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/InputServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/o_rustamov/magnitcrm/service/InputServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,26 +50,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ToolWindowBuild.ShowToolbar": "false",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Olimj/Desktop/java/magnit_crm/Magnit CRM/out/artifacts/Magnit_CRM_jar/Magnit CRM.jar",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pathVariables",
-    "spring.configuration.checksum": "a0edfe15b1d39a9ce58e51c0a048d43e"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ToolWindowBuild.ShowToolbar&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Olimj/Desktop/java/magnit_crm/Magnit CRM/out/artifacts/Magnit_CRM_jar/Magnit CRM.jar&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;a0edfe15b1d39a9ce58e51c0a048d43e&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Olimj\Desktop\java\magnit_crm\Magnit CRM\src\main\resources" />
@@ -153,7 +153,8 @@
       <workItem from="1664278347990" duration="1519000" />
       <workItem from="1664426671618" duration="624000" />
       <workItem from="1677819910990" duration="2495000" />
-      <workItem from="1678093149167" duration="5157000" />
+      <workItem from="1678093149167" duration="5333000" />
+      <workItem from="1678106192024" duration="901000" />
     </task>
     <task id="LOCAL-00001" summary="Project built &amp; login">
       <created>1662051658702</created>
@@ -288,7 +289,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678100412006</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="output pagination added">
+      <created>1678106005815</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1678106005815</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,6 +333,7 @@
     <MESSAGE value="my-outputs pagination" />
     <MESSAGE value="my-outputs pagination seperated from info" />
     <MESSAGE value="database digital ocean" />
-    <option name="LAST_COMMIT_MESSAGE" value="database digital ocean" />
+    <MESSAGE value="output pagination added" />
+    <option name="LAST_COMMIT_MESSAGE" value="output pagination added" />
   </component>
 </project>

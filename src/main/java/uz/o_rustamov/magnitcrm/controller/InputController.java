@@ -25,8 +25,8 @@ public class InputController {
 
     @PreAuthorize("hasAuthority('VIEW_INPUTS')")
     @GetMapping
-    public HttpEntity<ApiResponse> getAllInputs() {
-        return inputService.getAllInputs();
+    public HttpEntity<ApiResponse> getAllInputs(@RequestParam("page") int page, @RequestParam("size") int size) {
+        return inputService.getAllInputs(page, size);
     }
 
     @PreAuthorize("hasAuthority('VIEW_INPUTS')")
@@ -37,20 +37,20 @@ public class InputController {
 
     @PreAuthorize("hasAuthority('VIEW_INPUTS')")
     @GetMapping("/date")
-    public HttpEntity<ApiResponse> getInputByDate(@RequestParam String from, @RequestParam String to) {
-        return inputService.getInputByDate(from, to);
+    public HttpEntity<ApiResponse> getInputByDate(@RequestParam String from, @RequestParam String to, @RequestParam("page") int page, @RequestParam("size") int size) {
+        return inputService.getInputByDate(from, to, page, size);
     }
 
     @PreAuthorize("hasAuthority('VIEW_INPUTS')")
     @GetMapping("/supplier/{supplierId}")
-    public HttpEntity<ApiResponse> getInputBySupplierId(@PathVariable long supplierId) {
-        return inputService.getAllBySupplierId(supplierId);
+    public HttpEntity<ApiResponse> getInputBySupplierId(@PathVariable long supplierId, @RequestParam("page") int page, @RequestParam("size") int size) {
+        return inputService.getAllBySupplierId(supplierId, page, size);
     }
 
     @PreAuthorize("hasAuthority('VIEW_INPUTS')")
     @GetMapping("/supplier-and-date")
-    public HttpEntity<ApiResponse> getInputByPeriodAndSupplierId(@RequestParam String from, @RequestParam String to, @RequestParam long supplier_id) {
-        return inputService.getAllByPeriodAndSupplierId(from, to, supplier_id);
+    public HttpEntity<ApiResponse> getInputByPeriodAndSupplierId(@RequestParam String from, @RequestParam String to, @RequestParam long supplier_id, @RequestParam("page") int page, @RequestParam("size") int size) {
+        return inputService.getAllByPeriodAndSupplierId(from, to, supplier_id, page, size);
     }
 
     @PreAuthorize("hasAuthority('ADD_INPUT')")
