@@ -39,12 +39,6 @@ public class JwtFilter extends OncePerRequestFilter {
                                     userDetails.getAuthorities());
                     SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
                 }
-            } catch (ExpiredJwtException ex) {
-                performError(response, "Identifikatsiya ma'lumotlari eskirgan");
-                return;
-            } catch (SignatureException ex) {
-                performError(response, "Identifikatsiya ma'lumotlari noto'g'ri");
-                return;
             } catch (Exception e) {
                 performError(response, e.getMessage());
                 return;
@@ -60,7 +54,7 @@ public class JwtFilter extends OncePerRequestFilter {
         ApiResponse errorResponse = new ApiResponse(
 //                "Identifikatsiya ma'lumotlari eskirgan",
                 message,
-                401, false, null);
+                400, false, null);
 
         response.setStatus(401);
         response.setContentType("application/json");
