@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import uz.o_rustamov.magnitcrm.ApiResponse;
 
-import javax.servlet.ServletException;
-
-import static uz.o_rustamov.magnitcrm.Constants.TOKEN_EXPIRED;
 import static uz.o_rustamov.magnitcrm.Constants.YOU_DONT_HAVE_ACCESS;
 
 @ControllerAdvice
@@ -36,12 +33,6 @@ public class MyExceptionHandler {
     @ExceptionHandler(AccessDeniedException.class)
     public HttpEntity<ApiResponse> handleForbiddenException(AccessDeniedException ex) {
         return YOU_DONT_HAVE_ACCESS;
-
-    }
-
-    @ExceptionHandler(ServletException.class)
-    public HttpEntity<ApiResponse> handleJwtExpiredException(ServletException ex) {
-        return TOKEN_EXPIRED;
 
     }
 
